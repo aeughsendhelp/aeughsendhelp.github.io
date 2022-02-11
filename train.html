@@ -5,19 +5,27 @@
 			<title>
 				Train Go Brrr
 			</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
+		<link rel="stylesheet" type="text/css" href="references/style.css">
+    <script src="references/script.js"></script>
+		<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+		</script>
+		<script> 
+		$(function(){
+		  $("#navbar").load("references/navbar.html"); 
+		  $("#footer").load("references/footer.html"); 
+		});
+		</script>
+		<style>
+			.train {
+				font-weight: bold;
+			}
+		</style>
 	</head>
 <body>
 
-<!--navbar-->
-<div id="navbar">
-	<a href="index.html">Home</a>
-	<strong><a href="train.html">Train Go Brrr</a></strong>
-	<a href="enskyronment.html">Enskyronment</a>
-</div>
-
-<!--main-->
 <div id="main">
 	<h1>
 		Train Go Brrr
@@ -48,7 +56,7 @@
 		</tr>
 	<!--v1.0-->
 		<tr>
-			<td><a href="https://github.com/EvilPunkin/TrainTest/releases/download/0.5/TrainGoBrrr.zip" download="TrainGoBrrr">Windows 0.5</a></td>
+			<td><a href="https://github.com/EvilPunkin/TrainTest/releases/download/0.5/TrainGoBrrr.zip" download="TrainGoBrrr">Windows 0.5</a>		</td>
 		</tr>
 	</table>
 	</div>
@@ -58,31 +66,30 @@
 	<h1>
 		Changelog
 	</h1>
-	<p>
-
-	</p>
+	<table>
+		<tr>
+			<td>
+				<h2>Release 1.0</h2>
+				<p>
+					haven't released it but its planned don't worry
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h2>Release 0.5</h2>
+				<p>
+					First release! And last release too, probably. <em>On the repo I released this on.</em> I've got another repo which uses this as a base, but has actual game aspects.
+					<br>
+					<br>
+					This is just a proof of concept, with physics and trains and stuff, so you can download it if you want.
+				</p>
+			</td>
+		</tr>
+	</table>
 	</div
-
 </div>
 
-<!--footer-->
-<div id="footer">
-	<p>
-		<a href="https://github.com/EvilPunkin">
-			Github
-		</a>
-		|
-		<a href="https://www.youtube.com/channel/UCYFCAvB_5x9SaxY9AvjNXug">
-			Youtube
-		</a>
-		|
-		<a href="https://twitter.com/EvilPunkin">
-			Twitter
-		</a>
-	</p>
-	<p>
-		Copyright 2022 EvilPunkin.
-	</p>
-</div>
-</body>
+<div id="navbar"></div>
+<div id="footer"></div></body>
 </html>
