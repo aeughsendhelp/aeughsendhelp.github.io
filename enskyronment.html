@@ -5,17 +5,26 @@
 			<title>
 				Enskyronment
 			</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
+		<link rel="stylesheet" type="text/css" href="references/style.css">
+    <script src="references/script.js"></script>
+		<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+		</script>
+		<script> 
+		$(function(){
+		  $("#navbar").load("references/navbar.html"); 
+		  $("#footer").load("references/footer.html"); 
+		});
+		</script>
+		<style>
+			.enskyronment {
+				font-weight: bold;
+			}
+		</style>
 	</head>
 <body>
-
-<!--navbar-->
-<div id="navbar">
-	<strong><a href="index.html">Home</a></strong>
-	<a href="train.html">Train Go Brrr</a>
-	<a href="enskyronment.html">Enskyronment</a>
-</div>
 
 <!--main-->
 <div id="main">
@@ -41,5 +50,8 @@
 		Copyright 2022 EvilPunkin.
 	</p>
 </div>
+
+<div id="navbar"></div>
+<div id="footer"></div>
 </body>
 </html>

@@ -5,19 +5,27 @@
 			<title>
 				EvilPunkin
 			</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
+		<link rel="stylesheet" type="text/css" href="references/style.css">
+    <script src="references/script.js"></script>
+		<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+		</script>
+		<script> 
+		$(function(){
+		  $("#navbar").load("references/navbar.html"); 
+		  $("#footer").load("references/footer.html"); 
+		});
+		</script>
+		<style>
+			.home {
+				font-weight: bold;
+			}
+		</style>
 	</head>
 <body>
 
-<!--navbar-->
-<div id="navbar">
-	<strong><a href="index.html">Home</a></strong>
-	<a href="train.html">Train Go Brrr</a>
-	<a href="enskyronment.html">Enskyronment</a>
-</div>
-
-<!--main-->
 <div id="main">
 	<h1>why</h1>
 	<p>
@@ -50,25 +58,8 @@
 	</table>
 </div>
 
-<!--footer-->
-<div id="footer">
-	<p>
-		<a href="https://github.com/EvilPunkin">
-			Github
-		</a>
-		|
-		<a href="https://www.youtube.com/channel/UCYFCAvB_5x9SaxY9AvjNXug">
-			Youtube
-		</a>
-		|
-		<a href="https://twitter.com/EvilPunkin">
-			Twitter
-		</a>
-	</p>
-	<p>
-		Copyright 2022 EvilPunkin
-	</p>
-</div>
+<div id="navbar"></div>
+<div id="footer"></div>
 
 </body>
 </html>

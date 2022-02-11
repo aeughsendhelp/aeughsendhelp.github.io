@@ -4,6 +4,7 @@
 	--maincolor: #e9e9e9;
 	--linkcolor: #2d5092;
 	--linkcolorhover: #213a68;
+	--emphasiscolor: #8c8cab;
 	--fontsize: 16px;
 }
 
@@ -31,17 +32,20 @@ a:hover {
 	text-decoration: none;
 }
 
+em {
+	color:var(--emphasiscolor)
+}
 
 td {
-	padding: 8px;
+	padding: 10px;
 }
 
 table {
-  border-collapse: collapse;
+	border-collapse: collapse; 
+	border-radius: 5px;
   border-style: hidden;
 }
-
-table td {
+table tr {
   border: 3px solid var(--secondarybgcolor);
 }
 
@@ -49,14 +53,15 @@ table td {
   background: #000000;
 }
 
-#footer {
-	padding-top: 2px;
-	padding-bottom: 2px;
+footer {
+	padding-top: 10px; 
+	padding-bottom: 10px;
 	background-color: var(--secondarybgcolor);
   font-size: var(--fontsize);
+
 	text-align: center;
-  position: fixed;
-  left: 0;
+  position: absolute;
+	left: 0;
   bottom: 0;
   width: 100%;
 }
@@ -118,4 +123,23 @@ table td {
     text-align: center;
     float: none;
   }
+}
+
+/* The animation code */
+@keyframes loading {
+  0% {background-color: red;}
+	50% {background-color: green;
+			height: 200px;}
+  100% {background-color: yellow;}
+}
+
+/* The element to apply the animation to */
+#loading {
+  width: 100px;
+  height: 0px;
+  background-color: red;
+  animation-name: loading;
+  animation-duration: 1s;
+	animation-iteration-count: 5;
+	animation-fill-mode: forward;
 }
