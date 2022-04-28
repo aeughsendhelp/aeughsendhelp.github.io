@@ -1,6 +1,6 @@
 :root {
 	--secondarybgcolor: #0f0e13;
-  --bgcolor: #19191f;
+	--bgcolor: #19191f;
 	--bgcolorhover: #212129;
 	--maincolor: #e9e9e9;
 	--linkcolor: #2d5092;
@@ -152,4 +152,16 @@ footer {
   animation-duration: 1s;
 	animation-iteration-count: 5;
 	animation-fill-mode: forward;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	padding-left: 10px;
+	padding-top: 3px;
+	padding-top: 3px;
 }
