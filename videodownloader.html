@@ -9,12 +9,33 @@
     <link rel="stylesheet" href="references/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="references/load.js"></script>
+    <noscript>
+        This page needs JavaScript to work properly!
+    </noscript>
 </head>
 <body id="main">
     <h1 class="heading">download the funny</h1>
-    <input class="input" placeholder="youtube url go here">
-    <button class="convertbutton">Download</button>
-    <script src="references/videodownloader/script.js"></script>
+    <input id="downloadInput" placeholder="youtube url go here">
+    <button class="downloadButton" onclick="getVideos(downloadInput.value)">Download</button>
+    <select name="color">
+        <option value="1080">1920x1080</option>
+        <option value="720">1280x720</option>
+        <option value="480">480</option>
+    </select> 
+    <p id="message" class="resets"></p>
+	
+	<table style="width:100%" id="download_links">
+		<thead><tr>
+			<th>Download Link</th>
+			<th>File Type</th>
+			<th>Resolution</th>
+			<th>FPS</th>
+		<tr></thead>
+		<tbody id="tb" class="resets"></tbody>
+	</table>
+
+    <script src="references/videodownloader.js"></script>
+
     <div id="navbar"></div>
     <div id="footer"></div>
 </body>
