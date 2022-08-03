@@ -177,23 +177,25 @@ li {
 .heading {
     color: --accent;
 }
-.input {
+#downloadInput {
+	padding: 5px;
     border-radius:4px;
     text-align: left;
     width: 30em;
-    border: 1px solid var(--accentcolor2);
-    background: var(--accentcolor2);
+    border: 2px solid var(--linkcolor);
+    background: var(--linkcolor);
     outline:none;
 }
-.input:focus {
-    border:1px solid var(--accentcolor);
+#downloadInput:focus {
+    border:2px solid var(--linkcolorhover);
 }
-.convertbutton {
+.downloadButton {
+	padding: 5px;
     border-radius: 4px;
-    border: 1px solid var(--accentcolor);
-    background: var(--accentcolor);
+    border: 2px solid var(--linkcolor);
+    background: var(--linkcolor);
 }
-.convertbutton:hover {
-    border: 1px solid var(--accentcolor);
-    background: var(--accentcolor2);
+.downloadButton:hover {
+    border: 2px solid var(--linkcolorhover);
+    background: var(--linkcolor);
 }
