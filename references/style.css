@@ -8,10 +8,13 @@
 	--emphasiscolor: #8c8cab;
 	--fontsize: 16px;
 
-	/*video downloader*/
+	/*extra accent colors*/
     --accentcolor: #ff0077;
     --accentcolor2: #b90057;
-    --textcolor: #ffffff;
+}
+
+::selection {
+	background: #000000;
 }
 
 body {
@@ -20,11 +23,11 @@ body {
 	font-family: Arial, Geneva, sans-serif, "Comic Sans Ms";
 }
 
-/*body*/
 #main {
 	font-size: var(--fontsize);
 	margin-top: 50px;
 	margin-left: 250px;
+	margin-right: 60px;
 	position: relative;
 }
 
@@ -32,7 +35,10 @@ h1 {
 	font-weight: 200;
 }
 
-/*links*/
+p {
+	line-height: 1.5;
+}
+
 a {
 	color: var(--linkcolor);
 	text-decoration: none;
@@ -52,12 +58,21 @@ table {
 	border-radius: 5px;
 	border-style: hidden;
 }
+
 table tr {
 	border: 3px solid var(--secondarybgcolor);
 }
 
-::selection {
-	background: #000000;
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	padding-left: 10px;
+	padding-top: 3px;
+	padding-top: 3px;
 }
 
 footer {
@@ -68,6 +83,32 @@ footer {
 	padding: 1rem;
 	text-align: center;
 /*   background-color: var(--secondarybgcolor);*/
+}
+
+input {
+	padding: 5px;
+    border-radius:4px;
+    text-align: left;
+    width: 30em;
+    border: 2px solid var(--linkcolor);
+    background: var(--linkcolor);
+    outline:none;
+}
+
+input:focus {
+    border:2px solid var(--linkcolorhover);
+}
+
+button {
+	padding: 5px;
+    border-radius: 4px;
+    border: 2px solid var(--linkcolor);
+    background: var(--linkcolor);
+}
+
+button:hover {
+    border: 2px solid var(--linkcolorhover);
+    background: var(--linkcolor);
 }
 
 /* footer {
@@ -81,7 +122,6 @@ footer {
 	width: 100%;
 } */
 
-/*navbar*/
 #navbar {
 	height: 100%;
 	width: 190px;
@@ -101,6 +141,23 @@ footer {
 	text-align: center;
 	padding: 10px 20px;
 	text-decoration: none;
+}
+
+@keyframes loading {
+  	0% {background-color: red;}
+	50% {background-color: green; height: 200px;}
+  	100% {background-color: yellow;}
+}
+
+/* The element to apply the animation to */
+#loading {
+	width: 100px;
+	height: 0px;
+	background-color: red;
+	animation-name: loading;
+	animation-duration: 1s;
+	animation-iteration-count: 5;
+	animation-fill-mode: forward;
 }
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
@@ -138,60 +195,4 @@ footer {
     text-align: center;
     float: none;
   }
-}
-
-/* The animation code */
-@keyframes loading {
-  	0% {background-color: red;}
-	50% {background-color: green; height: 200px;}
-  	100% {background-color: yellow;}
-}
-
-/* The element to apply the animation to */
-#loading {
-	width: 100px;
-	height: 0px;
-	background-color: red;
-	animation-name: loading;
-	animation-duration: 1s;
-	animation-iteration-count: 5;
-	animation-fill-mode: forward;
-}
-
-ul {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-}
-
-li {
-	padding-left: 10px;
-	padding-top: 3px;
-	padding-top: 3px;
-}
-
-.heading {
-    color: --accent;
-}
-#downloadInput {
-	padding: 5px;
-    border-radius:4px;
-    text-align: left;
-    width: 30em;
-    border: 2px solid var(--linkcolor);
-    background: var(--linkcolor);
-    outline:none;
-}
-#downloadInput:focus {
-    border:2px solid var(--linkcolorhover);
-}
-.downloadButton {
-	padding: 5px;
-    border-radius: 4px;
-    border: 2px solid var(--linkcolor);
-    background: var(--linkcolor);
-}
-.downloadButton:hover {
-    border: 2px solid var(--linkcolorhover);
-    background: var(--linkcolor);
 }
