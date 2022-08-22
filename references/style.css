@@ -43,10 +43,6 @@ a:hover {
 	text-decoration: none;
 }
 
-em {
-	color:var(--emphasiscolor)
-}
-
 td {
 	padding: 10px;
 }
