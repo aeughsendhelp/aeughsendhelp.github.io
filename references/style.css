@@ -1,15 +1,17 @@
 :root {
-	--bgcolor: #191b1f;
-	--secondarybgcolor: #131518;
-	--bgcolorhover: #131318;
+	--bgcolor: #34363a;
+	--bgcolor2: #26282b;
+	--bgcolor3: #1a1c1f2f;
+	--bgcolorhover: #1a1c1f;
 	--bggradient: linear-gradient(
         to bottom right,  
-        var(--bgcolor), var(--secondarybgcolor)
+        var(--bgcolor), var(--bgcolor2)
     );
-	--maincolor: #c7c7c7;
-	--linkcolor: #816797;
-	--linkcolorhover: #51557E;
-	--emphasiscolor: #8c8cab;
+	--maincolor: #dfdfdf;
+	--maincolor2: #ffc875;
+	--linkcolor: #ffac31;
+	--linkcolorhover: #e28f13;
+	--emphasiscolor: #e7d39c;
 	--fontsize: 16px;
 
 	/*extra accent colors*/
@@ -18,7 +20,7 @@
 }
 
 ::selection {
-	background: #000000;
+	background: #1b1b1b;
 }
 
 html {
@@ -42,6 +44,17 @@ body {
 
 h1 {
 	font-weight: 200;
+	color: var(--maincolor2);
+}
+
+h2 {
+	font-weight: 200;
+	color: var(--linkcolor);
+}
+
+h3 {
+	font-weight: 200;
+	color: var(--linkcolorhover);
 }
 
 a {
@@ -66,7 +79,7 @@ table {
 }
 
 table tr {
-	border: 3px solid var(--secondarybgcolor);
+	border: 3px solid var(--bgcolor2);
 }
 
 ul {
@@ -93,9 +106,8 @@ footer {
 
 input {
 	padding: 5px;
-    border-radius:4px;
+    border-radius: 7px;
     text-align: left;
-    width: 30em;
     border: 2px solid var(--linkcolor);
     background: var(--linkcolor);
     outline:none;
@@ -108,7 +120,7 @@ input:focus {
 
 button {
 	padding: 5px;
-    border-radius: 4px;
+    border-radius: 7px;
     border: 2px solid var(--linkcolor);
     background: var(--linkcolor);
 	transition-duration: 500ms;
@@ -119,10 +131,23 @@ button:hover {
     background: var(--linkcolor);
 }
 
+select {
+	padding: 5px;
+    border-radius: 7px;
+    border: 2px solid var(--linkcolor);
+    background: var(--linkcolor);
+	transition-duration: 500ms;
+}
+
+select a:hover {
+    border: 2px solid var(--linkcolorhover);
+    background: var(--linkcolor);
+}
+
 /* footer {
 	padding-top: 10px; 
 	padding-bottom: 10px;
-	background-color: var(--secondarybgcolor);
+	background-color: var(--bgcolor2);
 	font-size: var(--fontsize);
 	position: fixed;
 	left: 0;
@@ -141,7 +166,7 @@ button:hover {
 	z-index: 1;
 	top: 0;
 	left: 0;
-	background-color: var(--secondarybgcolor); /* Black */
+	background-color: var(--bgcolor3); /* Black */
 	overflow-x: hidden; /* Disable horizontal scroll */
 	padding-top: 10px;
 }
