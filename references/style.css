@@ -2,6 +2,10 @@
 	--bgcolor: #191b1f;
 	--secondarybgcolor: #131518;
 	--bgcolorhover: #131318;
+	--bggradient: linear-gradient(
+        to bottom right,  
+        var(--bgcolor), var(--secondarybgcolor)
+    );
 	--maincolor: #c7c7c7;
 	--linkcolor: #816797;
 	--linkcolorhover: #51557E;
@@ -17,9 +21,14 @@
 	background: #000000;
 }
 
+html {
+	height: 100%;
+}
+
 body {
 	color: var(--maincolor);
-	background-color: var(--bgcolor);
+	/* background-color: var(--bgcolor); */
+	background: var(--bggradient);
 	font-family: Arial, Geneva, sans-serif, "Comic Sans Ms";
 }
 
@@ -38,6 +47,7 @@ h1 {
 a {
 	color: var(--linkcolor);
 	text-decoration: none;
+	transition-duration: 500ms;
 }
 
 a:hover {
@@ -89,6 +99,7 @@ input {
     border: 2px solid var(--linkcolor);
     background: var(--linkcolor);
     outline:none;
+	transition-duration: 500ms;
 }
 
 input:focus {
@@ -100,6 +111,7 @@ button {
     border-radius: 4px;
     border: 2px solid var(--linkcolor);
     background: var(--linkcolor);
+	transition-duration: 500ms;
 }
 
 button:hover {
