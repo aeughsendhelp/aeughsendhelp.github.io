@@ -1,0 +1,44 @@
+:root {
+	--color1: #cf731c;
+	--color2: #e7d31c;
+}
+
+@keyframes firework {
+  0% { 
+    width: 0.5vmin;
+    opacity: 1;
+  }
+  100% { 
+    width: 45vmin; 
+    opacity: 0; 
+  }
+}
+
+.firework::after {
+  --top: 60vh;
+  content: "";
+  position: absolute;
+  transform: translate(-50%, -20%);
+  width: 0.5vmin;
+  aspect-ratio: 1;
+  background:
+    /* random backgrounds */
+    radial-gradient(circle, var(--color1) 0.2vmin, #0000 0) 50% 00%,
+    radial-gradient(circle, var(--color1) 0.3vmin, #0000 0) 00% 50%,
+    radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 50% 99%,
+    radial-gradient(circle, var(--color1) 0.2vmin, #0000 0) 99% 50%,
+    radial-gradient(circle, var(--color2) 0.3vmin, #0000 0) 80% 90%,
+    radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 95% 90%,
+    radial-gradient(circle, var(--color1) 0.5vmin, #0000 0) 10% 60%,
+    radial-gradient(circle, var(--color2) 0.2vmin, #0000 0) 31% 80%,
+    radial-gradient(circle, var(--color1) 0.3vmin, #0000 0) 80% 10%,
+    radial-gradient(circle, var(--color1) 0.2vmin, #0000 0) 90% 23%,
+    radial-gradient(circle, var(--color1) 0.3vmin, #0000 0) 5% 20%,
+    radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 3% 28%,
+    radial-gradient(circle, var(--color1) 0.3vmin, #0000 0) 98% 20%,
+    radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 93% 24%
+    ;
+  background-size: 0.5vmin 0.5vmin;
+  background-repeat: no-repeat;
+  animation: firework 1s infinite;
+}

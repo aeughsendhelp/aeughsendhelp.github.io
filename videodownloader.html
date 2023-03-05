@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Downloader</title>
     <!-- <link rel="stylesheet" href="references/videodownloader/style.css"> -->
-    <link rel="stylesheet" href="references/style.css">
+    <link rel="stylesheet" href="references/styles/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="references/load.js"></script>
+    <script src="references/scripts/load.js"></script>
     <noscript>
         this page needs JavaScript to work so enable that or else problems
     </noscript>
 </head>
 <body id="main">
     <h1 class="heading">download the funny</h1>
-    <input id="downloadInput" placeholder="youtube url go here" size="70">
+    <input id="downloadInput" placeholder="youtube url go here" size="150">
     <button class="downloadButton" onclick="getVideos(downloadInput.value)">Download</button>
     <p id="message" class="resets"></p>
+    <h2>im gonna be honest, this thing is broken and i really dont feel like fixing it right now</h2>
 
     <p id="info" class="paragraph">To use this, enter the youtube url of the video you wish to download into the input box and click the download button. From there, click the result you want (I usually use the first couple ones) and, once it takes you to a new tab, right click the video and choose "Save Video As". If you just want the audio, I still recommend downloading from one of the first couple results and then converting it to an mp3 (or whatever format you want) with an external app, such as a conversion website or audacity. I know, it's a pain, but fixing that would mean more effort for me so I'm going to keep delaying it until I realize it would save <em>me</em> time when downloading videos also.</p>
     <p>Also, a lot of this (most of this) is taken from a github page I found online, so heres the link to that. (i haven't put it here i'll do it later) I've just built upon it and tried to make it something that I'm able to use.</p>

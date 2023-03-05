@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 :root {
 	--bgcolor: #34363a;
 	--bgcolor2: #26282b;
@@ -11,7 +13,12 @@
 	--maincolor2: #ffc875;
 	--linkcolor: #ffac31;
 	--linkcolorhover: #e28f13;
+	--linkgradient: linear-gradient(
+        to bottom right,  
+        var(--linkcolor), var(--linkcolorhover)
+    );
 	--emphasiscolor: #e7d39c;
+	--transparent: #00000000;
 	--fontsize: 16px;
 
 	/*extra accent colors*/
@@ -31,7 +38,11 @@ body {
 	color: var(--maincolor);
 	/* background-color: var(--bgcolor); */
 	background: var(--bggradient);
-	font-family: Arial, Geneva, sans-serif, "Comic Sans Ms";
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	font-family: 'Roboto', Geneva, sans-serif, "Comic Sans Ms";
 }
 
 #main {
@@ -69,7 +80,7 @@ a:hover {
 }
 
 td {
-	padding: 10px;
+	padding: 5px;
 }
 
 table {
@@ -106,29 +117,47 @@ footer {
 
 input {
 	padding: 5px;
-    border-radius: 7px;
+    border-radius: 4px;
     text-align: left;
-    border: 2px solid var(--linkcolor);
+    border: 2px solid var(--bgcolor);
     background: var(--linkcolor);
     outline:none;
 	transition-duration: 500ms;
 }
 
 input:focus {
-    border:2px solid var(--linkcolorhover);
+    border: 2px solid var(--maincolor);
+	background: var(--linkcolorhover);
+
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 
 button {
 	padding: 5px;
-    border-radius: 7px;
+    border-radius: 4px;
     border: 2px solid var(--linkcolor);
     background: var(--linkcolor);
 	transition-duration: 500ms;
 }
 
 button:hover {
-    border: 2px solid var(--linkcolorhover);
-    background: var(--linkcolor);
+    border: 2px solid var(--maincolor);
+}
+
+button:active {
+    background: var(--linkcolorhover);
 }
 
 select {
