@@ -12,7 +12,7 @@
 	--maincolor: #dfdfdf;
 	--maincolor2: #ffc875;
 	--linkcolor: #ffac31;
-	--linkcolorhover: #e28f13;
+	--linkcolorhover: #f0a029;
 	--linkgradient: linear-gradient(
         to bottom right,  
         var(--linkcolor), var(--linkcolorhover)
@@ -125,8 +125,12 @@ input {
 	transition-duration: 500ms;
 }
 
+input:hover {
+    border: 2px solid var(--linkcolorhover);
+}
+
 input:focus {
-    border: 2px solid var(--maincolor);
+    border: 2px solid var(--linkcolor);
 	background: var(--linkcolorhover);
 
 }
@@ -147,13 +151,13 @@ input[type=number] {
 button {
 	padding: 5px;
     border-radius: 4px;
-    border: 2px solid var(--linkcolor);
+    border: 2px solid var(--bgcolor);
     background: var(--linkcolor);
 	transition-duration: 500ms;
 }
 
 button:hover {
-    border: 2px solid var(--maincolor);
+    border: 2px solid var(--linkcolorhover);
 }
 
 button:active {
