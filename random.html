@@ -5,12 +5,12 @@
 			<title>
 				Random
 			</title>
-		<link rel="stylesheet" type="text/css" href="references/style.css">
-		<link rel="stylesheet" type="text/css" href="references/dropdown.css">
-		<script src="references/script.js"></script>
+		<link rel="stylesheet" type="text/css" href="references/styles/style.css">
+		<link rel="stylesheet" type="text/css" href="references/styles/firework.css">
+		<script src="references/scripts/script.js"></script>
 		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-		<script src="references/load.js"></script>
-		<script src="references/random.js"></script>
+		<script src="references/scripts/load.js"></script>
+		<script src="references/scripts/random.js"></script>
 	</head>
 <body>
 <div id="main">
@@ -21,7 +21,11 @@
 		Randomly picks true or false.
 	</p>
 	<button onclick="showRandomBool()">Click</button>
-	<p id="booloutput"></p>
+	<p id="booloutput">press the button</p>
+	<div class="firework"></div>
+
+    <h2>You'd think I'd know how to make a random number picker, but nope, this thing's broke</h2>
+
 
 	<h1>
 		Random Integer
@@ -29,10 +33,10 @@
 	<p>
 		Randomly picks between (and including) two integers. Make sure that minumim is actaully a lesser number because otherwise it breaks things. This is the type of thing that is really simple to fix but I don't feel like doing right now, so it probably won't ever get done.
 	</p>
-	<input type="text" id="min" name="min" width="10px" size="10" placeholder="Minumum">
+	<input type="number" id="min" name="min" width="10px" size="10" placeholder="Minumum">
 	<br>
 	<br>
-	<input type="text" id="max" name="max" width="10px" size="10" placeholder="Maximum">
+	<input type="number" id="max" name="max" width="10px" size="10" placeholder="Maximum">
 	<br>
 	<br>
 	<button onclick="showRandomInt()">Click</button>
@@ -40,6 +44,7 @@
 	<p id="intoutput"></p>
 </div>
 <script src="references/random.js"></script>
+<script src="references/particlesjs/particles.js"></script>
 
 <div id="navbar"></div>
 <div id="footer"></div>
