@@ -1,4 +1,5 @@
 var fractionArea = document.getElementById("fractionArea");
+var simplifiedFractionArea = document.getElementById("simplifiedFractionArea");
 var percentArea = document.getElementById("percentArea");
 var roundedPercentArea = document.getElementById("roundedPercentArea");
 
@@ -9,6 +10,7 @@ var k;
 var n;
 var equation1Output;
 var equation2Output;
+
 
 function Calculate() {
     k = kArea.value;
@@ -30,9 +32,25 @@ function Factorial(x) {
     }
     return x;
 }
+    
+function Reduce(numerator,denominator){
+    var gcd = function gcd(a,b){
+      return b ? gcd(b, a%b) : a;
+    };
+    gcd = gcd(numerator,denominator);
+    return [numerator/gcd, denominator/gcd];
+  }
+  
+  reduce(2,4);
+  // [1,2]
+  
+  reduce(13427,3413358);
+  // [463,117702]
+  
 
 function Display(fraction, percent) {
     fractionArea.innerHTML = fraction;
+    simplifiedFractionArea.innerHTML = Reduce(equation2Output,equation1Output)[0] + "/" + Reduce(equation2Output,equation1Output)[1];
     percentArea.innerHTML = percent * 100 + "%";
     roundedPercentArea.innerHTML = (percent * 100).toFixed(2) + "%";
 }
