@@ -36,7 +36,22 @@
     radial-gradient(circle, var(--color1) 0.3vmin, #0000 0) 5% 20%,
     radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 3% 28%,
     radial-gradient(circle, var(--color1) 0.3vmin, #0000 0) 98% 20%,
-    radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 93% 24%
+    radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 93% 24%,
+    
+    radial-gradient(circle, var(--color1) 0.2vmin, #0000 0) 53% 3%,
+    radial-gradient(circle, var(--color1) 0.3vmin, #0000 0) 00% 50%,
+    radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 50% 99%,
+    radial-gradient(circle, var(--color1) 0.2vmin, #0000 0) 99% 54%,
+    radial-gradient(circle, var(--color2) 0.3vmin, #0000 0) 80% 90%,
+    radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 5% 85%,
+    radial-gradient(circle, var(--color1) 0.5vmin, #0000 0) 10% 60%,
+    radial-gradient(circle, var(--color2) 0.2vmin, #0000 0) 31% 80%,
+    radial-gradient(circle, var(--color1) 0.3vmin, #0000 0) 23% 10%,
+    radial-gradient(circle, var(--color1) 0.2vmin, #0000 0) 90% 23%,
+    radial-gradient(circle, var(--color1) 0.3vmin, #0000 0) 5% 43%,
+    radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 3% 32%,
+    radial-gradient(circle, var(--color1) 0.3vmin, #0000 0) 65% 20%,
+    radial-gradient(circle, var(--color2) 0.5vmin, #0000 0) 43% 24%
     ;
   background-size: 0.5vmin 0.5vmin;
   background-repeat: no-repeat;
