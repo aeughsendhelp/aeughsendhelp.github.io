@@ -13,7 +13,7 @@
         this page needs JavaScript to work so enable that or else problems
     </noscript>
 </head>
-<body id="main">
+<div id="main">
     <h1 class="heading">download the funny</h1>
     <input id="downloadInput" placeholder="youtube url go here" size="150">
     <button class="downloadButton" onclick="getVideos(downloadInput.value)">Download</button>
@@ -32,16 +32,9 @@
 		<tr></thead>
 		<tbody id="tb" class="resets"></tbody>
 	</table>
-
-    <script src="references/videodownloader.js"></script>
-
-    <div id="navbar"></div>
-    <div id="footer"></div>
+</div>
+<script src="references/videodownloader.js"></script>
+<div id="navbar"></div>
+<div id="footer"></div>
 </body>
 </html>
-
-    <!-- <select name="color">
-        <option value="1080">1920x1080</option>
-        <option value="720">1280x720</option>
-        <option value="480">480</option>
-    </select>  -->
