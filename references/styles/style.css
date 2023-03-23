@@ -79,10 +79,6 @@ a:hover {
 	text-decoration: none;
 }
 
-td {
-	padding: 5px;
-}
-
 table {
 	border-collapse: collapse; 
 	border-radius: 5px;
@@ -91,6 +87,12 @@ table {
 
 table tr {
 	border: 3px solid var(--bgcolor2);
+	padding: 10px;
+}
+
+table td {
+	border: 3px solid var(--bgcolor2);
+	padding: 10px;
 }
 
 ul {
