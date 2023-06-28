@@ -1,13 +1,64 @@
-<div id="navbar">
-	<a href="index.html" class="home">Home</a>
-	<a href="train.html" class="train">Train Go Brrr</a>
-	<a href="skidsteer.html" class="skidsteer">Skid Steer</a>
-	<!-- <a href="enskyronment.html" class="enskyronment">Enskyronment</a> -->
-	<a href="spinnybox.html" class="spinnybox">spinny box</a>
+<div class="contenthorizontal" style="max-width: 100%" id="navbarHorizontal">
+	<div id="navbar">
+		<a href="../index/index.html" class="home">Home</a>
 
-<!-- this shall be replaced with utilities.html if the sidebar gets too full -->
-	<!-- <a href="utilities.html" class="utilities">Utilities</a> -->
-	<a href="random.html" class="random">Random</a>
-	<a href="videodownloader.html" class="videodownloader">thingy</a>
-	<a href="probably.html" class="probably">probably</a>
+		<button type="button" class="collapsiblevertical">Projects</button>
+		<div class="contentvertical" style="max-height: 100%">
+		<!-- Projects -->
+			<a href="../projects/train.html" class="train">Train Go Brrr</a>
+			<a href="../projects/skidsteer.html" class="skidsteer">Skid Steer</a>
+			<!-- <a href="../enskyronment.html" class="enskyronment">Enskyronment</a> -->
+			<a href="../projects/vehicledestructionsimulation.html" class="vehicledestructionsimulation">VDS</a>
+			<a href="../projects/squareplane.html" class="squareplane">squareplane</a>
+			<a href="../projects/spinnybox.html" class="spinnybox">spinny box</a>
+		</div>
+
+		<button type="button" class="collapsiblevertical">Utilities</button>
+		<div class="contentvertical" style="max-height: 100%">
+		<!-- Utilities -->
+			<a href="../utilities/random.html" class="random">Random</a>
+			<a href="../utilities/probably.html" class="probably">Probably</a>
+			<br>
+			<a href="../utilities/recursivepercentage.html" class="recursivepercentage">↻ %</a>
+			<!-- <a href="videodownloader.html" class="videodownloader">thingy</a> -->
+		</div>
+
+		<!-- <button type="button" class="collapsiblehorizontal"><</button> -->
+	</div>
 </div>
+
+<script>
+	var coll = document.getElementsByClassName("collapsiblevertical");
+	var i;
+
+	for(i = 0; i < coll.length; i++) {
+		coll[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+
+			if(content.style.maxHeight) {
+				content.style.maxHeight = null;
+			} else {
+				content.style.maxHeight = content.scrollHeight + "px";
+			}
+		});
+	}
+
+	var collhoriz = document.getElementsByClassName("collapsiblehorizontal");
+	var o;
+
+	for(o = 0; o < collhoriz.length; o++) {
+		collhoriz[o].addEventListener("click", function() {
+			var content = document.getElementById("navbarHorizontal");
+			console.log(content)
+
+			this.classList.toggle("active");
+	
+			if(content.style.maxWidth) {
+				content.style.maxWidth = null;
+			} else {
+				content.style.maxWidth = 200 + "px";
+			}
+		});
+	}
+</script>
