@@ -70,6 +70,7 @@ body {
 h1 {
 	font-weight: 200;
 	color: var(--maincolor2);
+	padding-bottom: 0px;
 }
 
 h2 {
@@ -248,7 +249,7 @@ select a:hover {
 }
 
 #navbar a:hover {
-	font-size: 22px;
+	/* font-size: 22px; */
 }
 
 @keyframes loading {
@@ -279,7 +280,7 @@ select a:hover {
 }
 
 .collapsiblevertical:hover {
-	font-size: 22px;
+	/* font-size: 22px; */
 	color: var(--linkcolorhover);
 	text-decoration: none;
 }
