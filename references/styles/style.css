@@ -12,7 +12,7 @@
 	--maincolor: #dfdfdf;
 	--maincolor2: #ffc875;
 	--linkcolor: #ffac31;
-	--linkcolorhover: #e28c1c;
+	--linkcolorhover: #c47815;
 	--linkgradient: linear-gradient(
         to bottom right,  
         var(--linkcolor), var(--linkcolorhover)
@@ -56,8 +56,8 @@ body {
 
 #main {
 	font-size: var(--fontsize);
-	margin-top: 50px;
-	margin-left: 250px;
+	margin-top: 80px;
+	margin-left: 20%; /* 250px if using sidebar*/
 	margin-right: 60px;
 	position: relative;
 
@@ -67,20 +67,28 @@ body {
 	flex-direction: column;
 }
 
+/* Basic styling*/
+p {
+	line-height: 1.5;
+}
+
 h1 {
 	font-weight: 200;
 	color: var(--maincolor2);
-	padding-bottom: 0px;
+	line-height: 1em;
 }
 
 h2 {
 	font-weight: 200;
 	color: var(--linkcolor);
+	padding: 0em;
+	line-height: 1em;
 }
 
 h3 {
 	font-weight: 200;
 	color: var(--linkcolorhover);
+	line-height: 1em;
 }
 
 a {
@@ -122,18 +130,6 @@ li {
 	padding-top: 3px;
 }
 
-footer {
-	/* position: absolute;
-	right: 0;
-	bottom: -10;
-	left: 0;
-	padding: 1rem; */
-	/* text-align: center; */
-	flex-grow: 0;
-	flex-shrink: 0;
-/*   background-color: var(--secondarybgcolor);*/
-}
-
 input {
 	padding: 5px;
 	margin-top: 5px;
@@ -147,7 +143,6 @@ input {
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
 	/* background: var(--linkcolor); */
 	transition-duration: 250ms;
-	
 }
 
 input:hover {
@@ -211,92 +206,103 @@ select a:hover {
     background: var(--linkcolor);
 }
 
-/* footer {
-	padding-top: 10px; 
-	padding-bottom: 10px;
-	background-color: var(--bgcolor2);
-	font-size: var(--fontsize);
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-} */
-
-.paragraph {
-	line-height: 1.5;
+footer {
+	flex-grow: 0;
+	flex-shrink: 0;
+	margin-top: 30px;
+	margin-bottom: 10px;
 }
 
+
+/* More Styling */
 #navbar {
-	height: 100%;
-	width: 190px;
+	height: 50px;
+	width: 100%;
 	position: fixed;
-	z-index: 1;
 	top: 0;
 	left: 0;
-	background-color: var(--bgcolor3);
-	overflow-x: hidden; /* Disable horizontal scroll */
-	padding-top: 10px;
+	vertical-align: middle;
+	z-index: 1;
+	background-color: var(--bgcolor2);
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
+	overflow: hidden;
+	transition: 250ms;
 }
-
+  
 #navbar a {
+	height: 100%;
 	font-size: 20px;
 	float: left;
 	display: block;
 	text-align: center;
 	padding: 10px 20px;
 	text-decoration: none;
+	transition: 0.4s; /* Adds a transition effect when the padding is decreased */
+
+    border-radius: 4px;
+	border-style: solid;
+	border-color: #00000000;
+    /* background: var(--linkcolor); */
+	transition-duration: 250ms;
 }
+  
 
 #navbar a:hover {
-	/* font-size: 22px; */
+	border-color: var(--linkcolorhover);
 }
 
-@keyframes loading {
-  	0% {background-color: red;}
-	50% {background-color: green; height: 200px;}
-  	100% {background-color: yellow;}
+#projects .contentvertical a {
+	font-size: 20px;
+	float: left;
+	text-align: left;
+	text-decoration: none;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	color: var(--linkcolor);
+	padding: 10px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: #00000000;
+	width: 96.8%;
+	background-color: #00000000;
+    /* background: var(--linkcolor); */
+	transition-duration: 250ms;
 }
 
-/* The element to apply the animation to */
-#loading {
-	width: 100px;
-	height: 0px;
-	background-color: red;
-	animation-name: loading;
-	animation-duration: 1s;
-	animation-iteration-count: 5;
-	animation-fill-mode: forward;
+#projects .contentvertical a div{
+	color: var(--maincolor);
+	font-size: 15px;
+
+}
+
+#projects a:hover {
+    border-color: var(--linkcolorhover);
+	border-style: solid;
+}  
+
+
+
+/* Links on mouse-over */
+#navbar a:hover {
+	background-color: #ddd;
+	color: black;
 }
 
 .collapsiblevertical {
 	font-size: 20px;
 	cursor: pointer;
 	width: 100%;
+	height: 60px;
 	text-align: left;
 	transition-duration: 250ms;
 	background-color: #00000000;
 	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .collapsiblevertical:hover {
 	/* font-size: 22px; */
-	color: var(--linkcolorhover);
-	text-decoration: none;
-}
-
-.collapsiblehorizontal {
-	font-size: 20px;
-	cursor: pointer;
-	width: 100%;
-	text-align: left;
-	transition-duration: 250ms;
-	background-color: #00000000;
-	transform: translate(0%, -10px);
-}
-
-.collapsiblehorizontal:hover {
-	font-size: 22px;
 	color: var(--linkcolorhover);
 	text-decoration: none;
 }
@@ -308,30 +314,48 @@ select a:hover {
 	transition: max-height 0.2s ease-out;
 }
 
-.contenthorizontal {
-	max-width: 0;
-	display: block;
-	overflow: hidden;
-	transition: max-width 0.2s ease-out;
-	/* white-space: pre */
+#projects {
+	width: 70%;
+	/* background-color: var(--bgcolor3); */
+	padding-top: 10px;
+	/* box-shadow: 0px 0px 10px var(--bgcolorhover); */
 }
 
-.tile {
-	padding: 100px;
-	height: 100px;
-	width: 100px;
-	margin: 10px
+#projects .contentvertical a {
+	font-size: 20px;
+	float: left;
+	text-align: left;
+	text-decoration: none;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	color: var(--linkcolor);
+	padding: 10px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: #00000000;
+	width: 96.8%;
+	background-color: #00000000;
+    /* background: var(--linkcolor); */
+	transition-duration: 250ms;
 }
 
-.tile:hover {
-	padding: 110px;
+#projects .contentvertical a div{
+	color: var(--maincolor);
+	font-size: 15px;
+
 }
 
-.tile img {
-	max-width:100%;
-	max-height:100%;
+#projects a:hover {
+    border-color: var(--linkcolorhover);
+	border-style: solid;
 }
 
+#project a:active {
+    background: var(--linkcolorhover);
+}
+
+
+/* Responsiveness */
 @media screen and (max-width: 700px) {
 	#navbar {
 		width: 100px;
@@ -343,39 +367,16 @@ select a:hover {
 	}
 }
 
-/* On screens that are less than 700px wide, make the sidebar into a topbar */
-/* @media screen and (max-width: 700px) {
+@media screen and (max-width: 580px) {
 	#navbar {
-		width: 100%;
-		height: 50px;
-		position: fixed;
-		left: 0;
-		bottom: 0;
-	}
-	#main {
-		margin-top: 100px;
-		margin-left: 10px;
-		margin-right: 10px;
+		padding: 20px 10px !important; /* Use !important to make sure that JavaScript doesn't override the padding on small screens */
 	}
 	#navbar a {
-		float: left;
+		float: none;
+		display: block;
+		text-align: left;
 	}
-	div.content {
-		margin-left: 0;
+	#navbar-right {
+		float: none;
 	}
-} */
-
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-/* @media screen and (max-width: 460px) {
-	#navbar {
-		height: 140px;
-	}
-	#main {
-		margin-top: 150px;
-	}
-  	#navbar a {
-		position: auto;
-    text-align: center;
-    float: none;
-  }
-} */
+} 
