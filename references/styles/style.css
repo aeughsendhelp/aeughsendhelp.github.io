@@ -13,19 +13,10 @@
 	--maincolor2: #ffc875;
 	--linkcolor: #ffac31;
 	--linkcolorhover: #c47815;
-	--linkgradient: linear-gradient(
-        to bottom right,  
-        var(--linkcolor), var(--linkcolorhover)
-    );
-	--emphasiscolor: #e7d39c;
-	--transparent: #00000000;
 	--fontsize: 16px;
-
-	/*extra accent colors*/
-    --accentcolor: #ff0077;
-    --accentcolor2: #b90057;
 }
 
+/* Highlight color */
 ::selection {
 	background: #1b1b1b;
 }
@@ -36,59 +27,32 @@ html {
 	padding: 0;
 	margin: 0;
 	scrollbar-color: var(--bgcolor) var(--bgcolorhover);
-}
-
-body {
+	font-family: 'Roboto', Geneva, sans-serif, "Comic Sans Ms"; /* comic sans is awesome */
+	
 	color: var(--maincolor);
-	/* background-color: var(--bgcolor); */
 	background: var(--bggradient);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
-	font-family: 'Roboto', Geneva, sans-serif, "Comic Sans Ms";
-
 	box-sizing: border-box;
-	height: 95%;
-	padding: 0;
-	margin: 0;
 }
 
 #main {
 	font-size: var(--fontsize);
-	margin-top: 80px;
-	margin-left: 20%; /* 250px if using sidebar*/
-	margin-right: 0px;
+	margin-top: 90px;
+	margin-left: 12%;
+	margin-right: 12%;
 	position: relative;
 
 	box-sizing: border-box;
-	min-height: 90%;
-	/* display: flex; */
 	flex-direction: column;
 }
 
-/* Basic styling*/
+/* Basic styling -----------------------------------------------------------------------------------------------------------------------*/
+
 p {
 	line-height: 1.5;
-}
-
-h1 {
-	font-weight: 200;
-	color: var(--maincolor2);
-	line-height: 1em;
-}
-
-h2 {
-	font-weight: 200;
-	color: var(--linkcolor);
-	padding: 0em;
-	line-height: 1em;
-}
-
-h3 {
-	font-weight: 200;
-	color: var(--linkcolorhover);
-	line-height: 1em;
 }
 
 a {
@@ -96,39 +60,55 @@ a {
 	text-decoration: none;
 	transition-duration: 250ms;
 }
-
 a:hover {
 	color: var(--linkcolorhover);
 	text-decoration: none;
 }
+
+h1 {
+	font-weight: 200;
+	color: var(--maincolor2);
+	line-height: 1em;
+}
+h2 {
+	font-weight: 200;
+	color: var(--linkcolor);
+	padding: 0em;
+	line-height: 1em;
+}
+h3 {
+	font-weight: 200;
+	color: var(--linkcolorhover);
+	line-height: 1em;
+}
+
 
 table {
 	border-collapse: collapse; 
 	border-radius: 5px;
 	border-style: hidden;
 }
-
 table tr {
 	border: 0px solid var(--bgcolor2); /* set to 3 to show border */
 	padding: 10px;
 }
-
 table td {
 	border: 0px solid var(--bgcolor2); /* set to 3 to show border */
 	padding: 10px;
 }
+
 
 ul {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
 }
-
 li {
 	padding-left: 10px;
 	padding-top: 3px;
 	padding-top: 3px;
 }
+
 
 input {
 	padding: 5px;
@@ -137,34 +117,26 @@ input {
 	border-radius: 5px;
 	border-color: var(--bgcolor);
 	color: var(--linkcolor);
-
 	border-style: solid;
 	background-color: #00000000;
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
 	/* background: var(--linkcolor); */
 	transition-duration: 250ms;
 }
-
 input:hover {
     border: 2px solid var(--linkcolorhover);
 }
-
 input:focus {
     border: 2px solid var(--linkcolor);
-	/* background: var(--linkcolorhover); */
 }
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
-
-/* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+	-moz-appearance: textfield;
 }
+
 
 button {
 	color: var(--linkcolor);
@@ -175,17 +147,15 @@ button {
 	width: 60px;
 	background-color: #00000000;
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
-    /* background: var(--linkcolor); */
 	transition-duration: 250ms;
 }
-
 button:hover {
     border-color: var(--linkcolorhover);
 }
-
 button:active {
     background: var(--linkcolorhover);
 }
+
 
 select {
 	padding: 5px;
@@ -195,16 +165,14 @@ select {
 	border-radius: 4px;
 	border-color: var(--bgcolor);
 	border-style: solid;
-	/* background-color: #00000000; */
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
-	/* background: var(--linkcolor); */
 	transition-duration: 250ms;
 }
-
 select a:hover {
     border: 2px solid var(--linkcolorhover);
     background: var(--linkcolor);
 }
+
 
 footer {
 	flex-grow: 0;
@@ -213,8 +181,8 @@ footer {
 	margin-bottom: 10px;
 }
 
+/* Shizzle Mcnizzle -----------------------------------------------------------------------------------------------------------------------*/
 
-/* More Styling */
 #navbar {
 	height: 50px;
 	width: 100%;
@@ -228,7 +196,6 @@ footer {
 	overflow: hidden;
 	transition: 250ms;
 }
-  
 #navbar a {
 	height: 100%;
 	font-size: 20px;
@@ -237,56 +204,18 @@ footer {
 	text-align: center;
 	padding: 10px 20px;
 	text-decoration: none;
-	transition: 0.4s; /* Adds a transition effect when the padding is decreased */
-
+	transition: 0.4s; 
     border-radius: 4px;
 	border-style: solid;
 	border-color: #00000000;
-    /* background: var(--linkcolor); */
 	transition-duration: 250ms;
 }
-  
-
 #navbar a:hover {
 	border-color: var(--linkcolorhover);
-}
-
-#projects .contentvertical a {
-	font-size: 20px;
-	float: left;
-	text-align: left;
-	text-decoration: none;
-	margin-top: 2px;
-	margin-bottom: 2px;
-	color: var(--linkcolor);
-	padding: 10px;
-	border-style: solid;
-	border-radius: 5px;
-	border-color: #00000000;
-	width: 96.8%;
-	background-color: #00000000;
-    /* background: var(--linkcolor); */
-	transition-duration: 250ms;
-}
-
-#projects .contentvertical a div{
-	color: var(--maincolor);
-	font-size: 15px;
-
-}
-
-#projects a:hover {
-    border-color: var(--linkcolorhover);
-	border-style: solid;
-}  
-
-
-
-/* Links on mouse-over */
-#navbar a:hover {
 	background-color: var(--bgcolor3);
-	/* color: black; */
+
 }
+
 
 .collapsiblevertical {
 	font-size: 20px;
@@ -300,13 +229,10 @@ footer {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
-
 .collapsiblevertical:hover {
-	/* font-size: 22px; */
 	color: var(--linkcolorhover);
 	text-decoration: none;
 }
-
 .contentvertical {
 	max-height: 0;
 	display: block;
@@ -315,21 +241,7 @@ footer {
 	transition-timing-function: ease-in-out;
 	max-height: 0px;
 }
-
-.contentOpen {
-	max-height: 1000px;
-	transition-duration: 0.4s;
-	transition-timing-function: ease-in-out;
-}
-
-#projects {
-	width: 70%;
-	/* background-color: var(--bgcolor3); */
-	padding-top: 10px;
-	/* box-shadow: 0px 0px 10px var(--bgcolorhover); */
-}
-
-#projects .contentvertical a {
+.contentvertical a {
 	font-size: 20px;
 	float: left;
 	text-align: left;
@@ -343,41 +255,51 @@ footer {
 	border-color: #00000000;
 	width: 96.8%;
 	background-color: #00000000;
-    /* background: var(--linkcolor); */
 	transition-duration: 250ms;
 }
-
-#projects .contentvertical a div{
+.contentvertical a div{
 	color: var(--maincolor);
 	font-size: 15px;
-
+}
+.contentOpen {
+	max-height: 1000px;
 }
 
+
+#frontimage, #frontimage img {
+	width: 100%;
+	height: 100%;
+	padding-right: 0px;
+}
+
+#projects {
+	width: 100%;
+	padding-top: 10px;
+}
 #projects a:hover {
     border-color: var(--linkcolorhover);
 	border-style: solid;
 }
-
 #project a:active {
     background: var(--linkcolorhover);
 }
 
 
 /* Responsiveness */
-@media screen and (max-width: 700px) {
+/* @media screen and (max-width: 700px) {
 	#navbar {
-		width: 0px;
+		width: 100px;
 	}
 
 	#main {
 		margin-left: 0px;
 		margin-right: 0px;
 	}
-}
+} */
 
-@media screen and (max-width: 580px) {
+/* @media screen and (max-width: 580px) {
 	#navbar {
-		padding: 0px 0px !important; /* Use !important to make sure that JavaScript doesn't override the padding on small screens */
+		padding: 0px 0px !important; 
 	}
 	#navbar a {
 		float: none;
@@ -387,4 +309,4 @@ footer {
 	#navbar-right {
 		float: none;
 	}
-} 
+}  */ /* Use !important to make sure that JavaScript doesn't override the padding on small screens */
