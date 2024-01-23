@@ -45,7 +45,7 @@ body {
 
 #main {
 	font-size: var(--fontsize);
-	margin-top: 90px;
+	margin-top: 50px;
 	margin-left: 12%;
 	margin-right: 12%;
 	position: relative;
@@ -244,22 +244,54 @@ footer hr {
 	vertical-align: top;
 	display: inline-block;
 	text-align: center;
-	padding-left: 10px;
-	padding-right: 10px;
 	height: 100%;
-	width: 400px;
-	border: 2px solid #0066ff;
+	width: 300px;
 	white-space: normal;
+
+	margin-left: 10px;
+	margin-right: 10px;
 }
 .vertitem {
 	display: block;
-	height: 300px;
+	height: 400px;
 	width: 100%;
-	/* margin: 2px; */
-	border: 2px solid #ff004c;
+	margin-bottom: 20px;
+	border-radius: 20px;
 	min-height: 100px;
+	border-color: var(--bgcolor);
+	border-style: solid;
+	background-color: #00000000;
+	box-shadow: 0px 0px 10px var(--bgcolorhover);
+	color: var(--linkcolor);
+	text-align: left;
+}
+.vertitem h2 {
+	margin-left: 10px;
+}
+.vertitem div {
+	margin-left: 10px;
+	color: var(--maincolor);
 }
 
+.titlevertitem {
+	display: block;
+	height: 100px;
+	width: 100%;
+	margin: 0px;
+	border-radius: 20px;
+	min-height: 100px;
+	border-color: var(--bgcolor);
+	border-style: solid;
+	background-color: #00000000;
+	box-shadow: 0px 0px 10px var(--bgcolorhover);
+	color: var(--linkcolor);
+	margin-bottom: 30px;
+}
+.titlevertitem h1 {	
+	margin: 0;
+	display: flex;
+	align-items: center;
+}
 
 #frontimage { 
 	width: 100%;
@@ -268,6 +300,7 @@ footer hr {
 	align-items: center;
 	justify-content: center;
 	background-image: url("http://images.huffingtonpost.com/2017-02-05-1486270544-2435418-RockyMountainNationalPark045.jpg");
+	box-shadow: 0px 0px 10px var(--bgcolorhover);
 }
 #frontimage h1 {
 	mix-blend-mode: difference;
