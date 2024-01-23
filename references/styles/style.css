@@ -27,7 +27,7 @@ html {
 	padding: 0;
 	margin: 0;
 	scrollbar-color: var(--bgcolor) var(--bgcolorhover);
-	font-family: 'Roboto', Geneva, sans-serif, "Comic Sans Ms"; /* comic sans is awesome */
+	font-family: 'Roboto', Geneva, sans-serif, "Comic Sans Ms"; /* comic sans is awdesome */
 	
 	color: var(--maincolor);
 	background: var(--bggradient);
@@ -36,6 +36,7 @@ html {
 	background-position: center;
 	background-attachment: fixed;
 	box-sizing: border-box;
+	white-space: nowrap;
 }
 
 body {
@@ -57,6 +58,8 @@ body {
 
 p {
 	line-height: 1.5;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 
@@ -185,6 +188,10 @@ footer {
 	margin-top: 30px;
 	margin-bottom: 10px;
 }
+footer hr {
+	margin-left: 5%;
+	margin-right: 5%;
+}
 
 /* Shizzle Mcnizzle -----------------------------------------------------------------------------------------------------------------------*/
 
@@ -222,52 +229,35 @@ footer {
 }
 
 
-.collapsiblevertical {
-	font-size: 20px;
-	cursor: pointer;
-	width: 100%;
-	height: 60px;
-	text-align: left;
-	transition-duration: 250ms;
-	background-color: #00000000;
-	padding: 5px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+.horizontalscrollmenu {
+	overflow-x: auto;
+	overflow-y: hidden;
+	width: 400%;
+	white-space: nowrap;
+
+	/* adds the fade effect to the edges */
+	--mask: linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(255,255,255,1) 2%, rgba(255,255,255,1) 98%, rgba(5,5,5,0) 100%); 
+	-webkit-mask: var(--mask); 
+	mask: var(--mask);
 }
-.collapsiblevertical:hover {
-	color: var(--linkcolorhover);
-	text-decoration: none;
+.horizitem {
+	vertical-align: top;
+	display: inline-block;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 100%;
+	width: 400px;
+	border: 2px solid #0066ff;
+	white-space: normal;
 }
-.contentvertical {
-	max-height: 0;
+.vertitem {
 	display: block;
-	overflow: hidden;
-	transition-duration: 0.4s;
-	transition-timing-function: ease-in-out;
-	max-height: 0px;
-}
-.contentvertical a {
-	font-size: 20px;
-	float: left;
-	text-align: left;
-	text-decoration: none;
-	margin-top: 2px;
-	margin-bottom: 2px;
-	color: var(--linkcolor);
-	padding: 10px;
-	border-style: solid;
-	border-radius: 5px;
-	border-color: #00000000;
-	width: 96.8%;
-	background-color: #00000000;
-	transition-duration: 250ms;
-}
-.contentvertical a div{
-	color: var(--maincolor);
-	font-size: 15px;
-}
-.contentOpen {
-	max-height: 1000px;
+	height: 300px;
+	width: 100%;
+	/* margin: 2px; */
+	border: 2px solid #ff004c;
+	min-height: 100px;
 }
 
 
