@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 :root {
-	--bgcolor: #34363a;
-	--bgcolor2: #26282b;
-	--bgcolor3: #1a1c1f2f;
+	--bgcolor: #2a2b2e;
+	--bgcolor2: #27282c;
+	--bgcolor3: #1a1c1fad;
 	--bgcolorhover: #1a1c1f;
 	--bggradient: linear-gradient(
         to bottom right,  
         var(--bgcolor), var(--bgcolor2)
     );
-	--maincolor: #dfdfdf;
-	--maincolor2: #ffc875;
-	--linkcolor: #ffac31;
-	--linkcolorhover: #c47815;
+	--maincolor: #ceb992;
+	--maincolor2: #769782;
+	--linkcolor: #769782;
+	--linkcolorhover: #769782;
 	--fontsize: 16px;
 }
 
@@ -203,7 +203,7 @@ footer hr {
 	left: 0;
 	vertical-align: middle;
 	z-index: 1;
-	background-color: var(--bgcolor2);
+	background-color: var(--bgcolor3);
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
 	overflow: hidden;
 	transition: 250ms;
@@ -265,33 +265,45 @@ footer hr {
 	color: var(--linkcolor);
 	text-align: left;
 }
+.vertitem img {
+	border-radius: 15px 15px 0px 0px;;
+	object-fit: cover;
+	height: 50%;
+	width: 100%;
+}
 .vertitem h2 {
+	position: absolute;
+	top: 8px;
+	left: 16px;
 	margin-left: 10px;
+	white-space: pre
 }
 .vertitem div {
 	margin-left: 10px;
 	color: var(--maincolor);
+	position: relative;
+	top: 50%;
 }
 
 .titlevertitem {
 	display: block;
-	height: 100px;
+	height: 50px;
 	width: 100%;
 	margin: 0px;
 	border-radius: 20px;
-	min-height: 100px;
 	border-color: var(--bgcolor);
 	border-style: solid;
 	background-color: #00000000;
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
 	color: var(--linkcolor);
+	border-color: var(--linkcolor);
 	margin-bottom: 30px;
 }
-.titlevertitem h1 {	
-	margin: 0;
-	display: flex;
-	align-items: center;
+.titlevertitem h1 {
+	margin: 10px;
+	vertical-align: middle;
 }
+
 
 #frontimage { 
 	width: 100%;
