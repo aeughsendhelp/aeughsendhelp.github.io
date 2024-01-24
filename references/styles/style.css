@@ -3,7 +3,8 @@
 :root {
 	--bgcolor: #2a2b2e;
 	--bgcolor2: #27282c;
-	--bgcolor3: #1a1c1fad;
+	--bgcolor3: #1a1c1fc7;
+	--bgcolor4: #1a1c1f6b;
 	--bgcolorhover: #1a1c1f;
 	--bggradient: linear-gradient(
         to bottom right,  
@@ -33,7 +34,6 @@ html {
 	font-family: 'Roboto', Geneva, sans-serif, "Comic Sans Ms"; /* comic sans is awdesome */
 	
 	color: var(--maincolor);
-	background: var(--bggradient);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -46,15 +46,25 @@ body {
 	margin: 0px;
 }
 
-#main {
-	font-size: var(--fontsize);
-	margin-top: 50px;
-	margin-left: 12%;
-	margin-right: 12%;
+#maincontainer {
+	background: var(--bggradient);
 	position: relative;
-
+	min-height: 100%;
 	box-sizing: border-box;
 	flex-direction: column;
+	padding: 0px;
+
+	top: -21px; /* i dont understand why i need this but it makes it work */
+	box-shadow: 0px 0px 10px var(--bgcolorhover);
+
+}
+
+#main {
+	font-size: var(--fontsize);
+	margin-left: 12%;
+	margin-right: 12%;
+	/* margin-top: 50px; */
+	
 }
 
 /* Basic styling -----------------------------------------------------------------------------------------------------------------------*/
@@ -134,7 +144,7 @@ li {
 button {
 	color: var(--linkcolor);
 	padding: 10px;
-    border-radius:  var(--borderradius);
+	border-radius: var(--borderradius);
 	border-color: var(--bgcolor);
 	border-style: solid;
 	width: 60px;
@@ -239,7 +249,7 @@ footer hr {
 	padding: 10px 20px;
 	text-decoration: none;
 	transition: 0.4s; 
-    border-radius: var(--borderradius);
+    border-radius: 5px;
 	border-style: solid;
 	border-color: #00000000;
 	transition-duration: var(--transitionms)
@@ -247,7 +257,6 @@ footer hr {
 #navbar a:hover {
 	border-color: var(--linkcolorhover);
 	background-color: var(--bgcolor3);
-
 }
 
 
@@ -288,6 +297,9 @@ footer hr {
 	text-align: left;
 	position: relative;
 }
+.vertitem:hover {
+	background-color: var(--bgcolor4);
+}
 .vertitem img {
 	/* position: absolute; */
 	border-radius: 14px 14px 0px 0px;;
@@ -299,10 +311,9 @@ footer hr {
 	z-index: -1;
 }
 .vertitem h2 {
-	/* position: fixed; */
+	text-align: center;
 	top: 8px;
 	left: 16px;
-	margin-left: 10px;
 	white-space: pre;
 	position: static;
 	mix-blend-mode: difference;
@@ -344,15 +355,19 @@ footer hr {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-image: url("http://images.huffingtonpost.com/2017-02-05-1486270544-2435418-RockyMountainNationalPark045.jpg");
-	box-shadow: 0px 0px 10px var(--bgcolorhover);
+	margin: 0px;
+	padding: 0px;
 }
 #frontimage h1 {
 	mix-blend-mode: difference;
 	color: #ffffff;
 	font-size: 100px;
 }
-
+#frontimage img {
+	z-index: -4;
+	position: fixed;
+	width: 100vw;
+}
 
 #projects {
 	width: 100%;
