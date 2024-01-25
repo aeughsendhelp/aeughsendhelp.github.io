@@ -2,7 +2,7 @@
 
 :root {
 	--bgcolor: #2a2b2e;
-	--bgcolor2: #27282c;
+	--bgcolor2: #1b1c1f;
 	--bgcolor3: #1a1c1fc7;
 	--bgcolor4: #1a1c1f6b;
 	--bgcolorhover: #1a1c1f;
@@ -40,6 +40,7 @@ html {
 	background-attachment: fixed;
 	box-sizing: border-box;
 	white-space: nowrap;
+	background-color: #000000;
 }
 
 body {
@@ -50,11 +51,10 @@ body {
 	background: var(--bggradient);
 	position: relative;
 	min-height: 100%;
-	box-sizing: border-box;
 	flex-direction: column;
 	padding: 0px;
 
-	top: -21px; /* i dont understand why i need this but it makes it work */
+	/* top: -21px; i dont understand why i need this but it makes it work */
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
 
 }
@@ -70,6 +70,7 @@ body {
 
 p {
 	line-height: 1.5;
+	white-space: normal;
 	/* margin-left: 20px; */
 	/* margin-right: 20px; */
 }
@@ -106,6 +107,7 @@ h3 {
 hr {
 	margin-top: 30px;
 	margin-bottom: 30px;
+	color: var(--linkcolorhover);
 }
 
 
@@ -207,9 +209,8 @@ select a:hover {
 footer {
 	flex-grow: 0;
 	flex-shrink: 0;
-	margin-top: 30px;
-	margin-bottom: 10px;
-	background: var(--bggradient);
+	padding-top: 30px;
+	padding-bottom: 10px;
 }
 footer hr {
 	margin-left: 5%;
@@ -349,9 +350,8 @@ footer hr {
 
 
 #frontimage { 
-	width: 100%;
-	height: 50vh;
-	object-fit: cover;
+	min-width: 100%;
+	min-height: 70vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -366,6 +366,8 @@ footer hr {
 #frontimage img {
 	z-index: -4;
 	position: fixed;
+	object-fit: cover;
+	height: 90%;
 	width: 100vw;
 }
 
