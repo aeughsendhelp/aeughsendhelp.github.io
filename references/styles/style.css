@@ -211,6 +211,7 @@ footer {
 	flex-shrink: 0;
 	padding-top: 30px;
 	padding-bottom: 10px;
+	text-align: center;
 }
 footer hr {
 	margin-left: 5%;
