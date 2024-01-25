@@ -56,13 +56,14 @@ body {
 
 	/* top: -21px; i dont understand why i need this but it makes it work */
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
+	min-height: 100vh;
 }
 
 #main {
 	font-size: var(--fontsize);
 	margin-left: 12%;
 	margin-right: 12%;
-	padding-top: 30px;
+	padding-top: 60px;
 }
 
 /* Basic styling -----------------------------------------------------------------------------------------------------------------------*/
@@ -334,8 +335,9 @@ footer hr {
 	left: 16px;
 	white-space: pre;
 	position: static;
-	mix-blend-mode: difference;
+	/* mix-blend-mode: difference; */
 	color: #ffffff;
+	text-shadow: 0px 0px 3px #000000;
 }
 .vertitem div {
 	height: 100px;
@@ -376,9 +378,11 @@ footer hr {
 	padding: 0px;
 }
 #frontimage h1 {
-	mix-blend-mode: difference;
-	color: #ffffff;
+	/* mix-blend-mode: difference; */
+	color: #ffffffa1;
 	font-size: 100px;
+	text-shadow: 0px 0px 10px #000000;
+	z-index: 1;
 }
 #frontimage img {
 	z-index: 0;
@@ -400,30 +404,3 @@ footer hr {
 #project a:active {
     background: var(--linkcolorhover);
 }
-
-
-/* Responsiveness */
-/* @media screen and (max-width: 700px) {
-	#navbar {
-		width: 100px;
-	}
-
-	#main {
-		margin-left: 0px;
-		margin-right: 0px;
-	}
-} */
-
-/* @media screen and (max-width: 580px) {
-	#navbar {
-		padding: 0px 0px !important; 
-	}
-	#navbar a {
-		float: none;
-		display: block;
-		text-align: left;
-	}
-	#navbar-right {
-		float: none;
-	}
-}  */ /* Use !important to make sure that JavaScript doesn't override the padding on small screens */

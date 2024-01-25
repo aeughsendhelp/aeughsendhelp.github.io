@@ -1,9 +1,9 @@
-function getRandomIntFromInterval(min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min)
+function generateRandomInteger(min, max) {
+    return Math.floor(min + Math.random()*(max - min + 1))
 }
 
 function getRandomBool() {
-    return Math.random() < 0.5;
+    return Math.random() >= 0.5;
 }
 
 function showRandomBool() {
@@ -11,5 +11,7 @@ function showRandomBool() {
 }
 
 function showRandomInt() {
-    document.getElementById("intoutput").innerHTML = getRandomIntFromInterval(document.getElementById("min").value, document.getElementById("max").value)/10;
+    var random = new Random.Random();
+    alert("Random value from 1 to 100: " + random.integer(1, 100));
+    // document.getElementById("intoutput").innerHTML = generateRandomInteger(document.getElementById("min").value, document.getElementById("max").value)/10;
 }
