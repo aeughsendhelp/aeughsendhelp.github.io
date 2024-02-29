@@ -1,4 +1,4 @@
-// haha some of this is from replit template dont make fun of me pls im still learning three.js
+//  make fun of me 
 
 
 var frame = 0;
@@ -23,9 +23,15 @@ renderer.setClearColor(0xaaaaaa, 1);
 document.body.appendChild(renderer.domElement);
 
 //light
-const light = new THREE.PointLight( 0xffffff, 1, 100 );
+const light = new THREE.PointLight( 0xc6eaf2, 1, 100 );
 light.position.set( 0, 2, 0 );
 scene.add( light );
+
+// Background
+const loader2 = new THREE.TextureLoader();
+const bgTexture = loader2.load('../../images/yosemite.jpg');
+bgTexture.colorSpace = THREE.SRGBColorSpace;
+scene.background = bgTexture;
 
 // Texture
 const loader = new THREE.CubeTextureLoader();
@@ -37,51 +43,57 @@ const textureCube = loader.load( [
 ] );
 const cubeMat = new THREE.MeshToonMaterial( { color: 0xff6600 } );
 const otherMat = new THREE.MeshStandardMaterial( { color: randomColor } );
-const texture = new THREE.TextureLoader().load( 'textures/pickel.jpeg' );
-const material = new THREE.MeshBasicMaterial( { map: texture } );
+const texture = new THREE.TextureLoader().load( '../../images/evgames.jpg' );
+const texture2= new THREE.TextureLoader().load( '../../images/excuseme.png' );
+const materialMat = new THREE.MeshBasicMaterial( { map: texture } );
+const matmatmat = new THREE.MeshBasicMaterial( { map: texture2 } );
 
-// A cube we are going to animate
+
+const tube = {
+  geometry: new THREE.DodecahedronGeometry(0.2, 1),
+  material: materialMat
+};
+
+const tube2 = {
+  geometry: new THREE.TorusKnotGeometry(0.5),
+  material: matmatmat
+};
+
 const cube = {
-  // The geometry: the shape & size of the object
-  geometry: new THREE.BoxGeometry(1, 1, 1),
-  // The material: the appearance (color, texture) of the object
-  material: cubeMat
+  geometry: new THREE.BoxGeometry(2, 2, 2),
+  material: materialMat
 };
 
-// A cube we are going to animate
 const cube2 = {
-  // The geometry: the shape & size of the object
   geometry: new THREE.BoxGeometry(1, 1, 1),
-  // The material: the appearance (color, texture) of the object
-  material: material
-};
-
-// A cube we are going to animate
-const cube3 = {
-  // The geometry: the shape & size of the object
-  geometry: new THREE.BoxGeometry(1, 1, 1),
-  // The material: the appearance (color, texture) of the object
   material: cubeMat
 };
 
-// A cube we are going to animate
+const cube3 = {
+  geometry: new THREE.BoxGeometry(1, 1, 1),
+  material: cubeMat
+};
+
+
 const ground = {
-  // The geometry: the shape & size of the object
   geometry: new THREE.BoxGeometry(2, 0.1, 2),
-  // The material: the appearance (color, texture) of the object
   material: otherMat
 };
 
 ground.mesh = new THREE.Mesh(ground.geometry, ground.material);
 cube.mesh = new THREE.Mesh(cube.geometry, cube.material);
-cube2.mesh = new THREE.Mesh(ground.geometry, ground.material);
-cube3.mesh = new THREE.Mesh(ground.geometry, ground.material);
+cube2.mesh = new THREE.Mesh(cube2.geometry, cube2.material);
+cube3.mesh = new THREE.Mesh(cube3.geometry, cube3.material);
+tube.mesh = new THREE.Mesh(tube.geometry, tube.material);
+tube2.mesh = new THREE.Mesh(tube2.geometry, tube2.material);
 
 // Add the cube into the scene
 scene.add(ground.mesh);
 scene.add(cube.mesh);
 scene.add(cube2.mesh);
 scene.add(cube3.mesh);
+scene.add(tube.mesh);
+scene.add(tube2.mesh);
 
 // Make the camera further from the cube so we can see it better
 camera.position.z = 5;
@@ -101,26 +113,30 @@ function render() {
 
 	
   // Rotate the cube every frame
-  cube.mesh.position.x = Math.sin(frame*7);
-  cube.mesh.position.y = Math.sin(frame*3);
-  cube.mesh.position.z = Math.sin(frame*9);
+  cube.mesh.position.x = 0.5 * Math.sin(frame*10);
+  cube.mesh.position.y = 0.5 * Math.sin(frame*4);
+  cube.mesh.position.z = Math.sin(frame*15);
+  cube.mesh.rotation.z += 0.03
+  cube.mesh.rotation.x += 0.02
 
-	cube2.mesh.scale.x = Math.random(1,10);
-	cube2.mesh.scale.y = Math.random(1,10);
-	cube2.mesh.scale.z = Math.random(1,10);
-  cube2.mesh.position.x = Math.sin(frame*2);
-  cube2.mesh.position.y = Math.sin(frame*8);
+  cube2.mesh.position.x = 4 * Math.sin(frame*2);
+  cube2.mesh.position.y = 3 * Math.sin(frame*8);
   cube2.mesh.position.z = Math.sin(frame*35);
   cube2.mesh.rotation.z += 2;
 
-  cube3.mesh.position.x = Math.random(-20,20);
-  cube3.mesh.position.y = Math.random(-20,20);
-  cube3.mesh.position.z = Math.random(-20,20);
+  tube.mesh.position.x = 3 * Math.sin(frame * 15);
+  tube2.mesh.position.y = 3 * Math.sin(frame * 1);
+  tube2.mesh.rotation.z += 0.1;
+
+  cube3.mesh.position.x = Math.random(-50,60);
+  cube3.mesh.position.y = Math.random(-20,50);
+  cube3.mesh.position.z = Math.random(-60,50);
 	cube3.mesh.rotation.z += 2;
 	
   ground.mesh.rotation.x = Math.sin(frame*9);
-  ground.mesh.rotation.y += 2;
-  ground.mesh.rotation.z += 4;
+  ground.mesh.rotation.y += 0.12;
+  ground.mesh.rotation.z += 0.14;
+  ground.mesh.position.x = Math.tan(frame)
 
   cubeMat.color.setRGB(Math.random(1,255), Math.random(1,255), Math.random(1,255)
 );
