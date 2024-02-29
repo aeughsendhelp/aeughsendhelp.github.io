@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="width=device-width, initial-scale=1" charset="utf-8"/>
+			<title>
+				Artillery Calculator
+			</title>
+		<link rel="stylesheet" type="text/css" href="../references/styles/style.css">
+		<script src="../references/scripts/script.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+		<script src="../references/scripts/load.js"></script>
+		<script src="../references/scripts/artillerycalculator.js"></script>
+	</head>
+	<body>
+		<div id="maincontainer">
+		<div id="main">
+			<h1>
+				Artillery Calculator
+			</h1>
+			<p>
+				Made for big cannons on tanks
+			</p>
+
+			<hr>
+
+			<h2>Parameters</h2>
+
+			<label>Cannon Offset:</label>
+			<input type="number" size="10" placeholder="x">
+			<input type="number" size="10" placeholder="y">
+			<input type="number" size="10" placeholder="z">
+			<br>
+
+			<label>Cannon Mount Rotation:</label>
+			<input type="number" size="10" placeholder="Degrees">
+			<br>
+
+			<label>Initial Coordinates:</label>
+			<input type="number" size="10" placeholder="x">
+			<input type="number" size="10" placeholder="y">
+			<input type="number" size="10" placeholder="z">
+			
+			<hr class="hrMin">
+
+			<label>Target Coordinates:</label> 
+			<input type="number" size="10" placeholder="x">
+			<input type="number" size="10" placeholder="y">
+			<input type="number" size="10" placeholder="z">
+			<br>
+
+			<label>Number of Charges:</label>
+			<input type="number" size="10" placeholder="Charges">
+			<br>
+			<br>
+
+			<button onclick="calculate()" width="50px">Calculate</button>
+
+			<hr class="hrMin">
+
+			<h2>Output</h2>
+
+			<label>Local Pitch</label>
+			<input readonly  type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
+			Degrees<br>
+			<label>Local Yaw</label>
+			<input readonly type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
+			Degrees<br>
+
+			<label>Global Pitch</label>
+			<input readonly type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
+			Degrees<br>
+			<label>Global Yaw</label>
+			<input readonly type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
+			Degrees<br>
+
+			<label>Airtime</label>
+			<input readonly type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
+			Seconds<br>
+			<label>Precision</label>
+			<input readonly type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
+			%
+
+			<hr>
+
+			<h2>Usage</h2>
+			<ol>
+				<li>Make sure the tank is stationary and on level ground.</li>
+				<li>Enter the initial cannon direction, in degrees. This can be gotten by looking straight ahead along your tank and then using f3 to get the bearing.</li>
+				<li>Enter the amount of blocks the cannon is offset from the seat. Press f3 to get your coords while sitting in a seat, and then enter those in the initial coordinates.</li>
+				<li>Enter the coordinates of the target.</li>
+				<li>Enter the amount of powder charges you want to use.</li>
+				<li>Press Calculate.</li>
+				<li>After getting the degrees, input them into your cannon. If you're just eyeballing the rotation of the cannon, use the global space rotation. If you're putting them in through computercraft or whatever, use the local space rotation.</li>
+			</ol>
+
+			<div id="footer"></div>
+		</div>
+		</div>
+
+		<div id="navbar"></div>
+	</body>
+</html>
