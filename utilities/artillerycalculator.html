@@ -25,60 +25,87 @@
 
 			<h2>Parameters</h2>
 
-			<label>Cannon Offset:</label>
+			<label style="width: 170px">Cannon Offset:</label>
 			<input type="number" size="10" placeholder="x">
 			<input type="number" size="10" placeholder="y">
 			<input type="number" size="10" placeholder="z">
 			<br>
 
-			<label>Cannon Mount Rotation:</label>
+			<label style="width: 170px">Cannon Mount Rotation:</label>
 			<input type="number" size="10" placeholder="Degrees">
 			<br>
 
-			<label>Initial Coordinates:</label>
+			<label style="width: 170px">Initial Coordinates:</label>
 			<input type="number" size="10" placeholder="x">
 			<input type="number" size="10" placeholder="y">
 			<input type="number" size="10" placeholder="z">
 			
 			<hr class="hrMin">
 
-			<label>Target Coordinates:</label> 
+			<label style="width: 170px">Target Coordinates:</label> 
 			<input type="number" size="10" placeholder="x">
 			<input type="number" size="10" placeholder="y">
 			<input type="number" size="10" placeholder="z">
 			<br>
 
-			<label>Number of Charges:</label>
+			<label style="width: 170px">Number of Charges:</label>
 			<input type="number" size="10" placeholder="Charges">
 			<br>
 			<br>
 
-			<button onclick="calculate()" width="50px">Calculate</button>
+			<button onclick="Calculate()" width="50px">Calculate</button>
 
 			<hr class="hrMin">
 
-			<h2>Output</h2>
+			<div class="artilleryoutput">
+				<h2>Trajectory 1</h2>
 
-			<label>Local Pitch</label>
-			<input readonly  type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
-			Degrees<br>
-			<label>Local Yaw</label>
-			<input readonly type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
-			Degrees<br>
+				<label style="width: 100px">Local Pitch</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="localPitch" placeholder="Press Calculate">
+				°<br>
+				<label style="width: 100px">Local Yaw</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="localYaw" placeholder="Press Calculate">
+				°<br>
 
-			<label>Global Pitch</label>
-			<input readonly type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
-			Degrees<br>
-			<label>Global Yaw</label>
-			<input readonly type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
-			Degrees<br>
+				<label style="width: 100px">Global Pitch</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="globalPitch" placeholder="Press Calculate">
+				°<br>
+				<label style="width: 100px">Global Yaw</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="globalYaw" placeholder="Press Calculate">
+				°<br>
 
-			<label>Airtime</label>
-			<input readonly type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
-			Seconds<br>
-			<label>Precision</label>
-			<input readonly type="number" size="20" placeholder="Press Calculate" class="pitchOutput">
-			%
+				<label style="width: 100px">Airtime</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="airtime" placeholder="Press Calculate">
+				Seconds<br>
+				<label style="width: 100px">Precision</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="precision" placeholder="Press Calculate">
+				%
+			</div>
+
+			<div class="artilleryoutput">
+				<h2>Trajectory 2</h2>
+
+				<label style="width: 100px">Local Pitch</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="localPitch" placeholder="Press Calculate">
+				°<br>
+				<label style="width: 100px">Local Yaw</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="localYaw" placeholder="Press Calculate">
+				°<br>
+
+				<label style="width: 100px">Global Pitch</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="globalPitch" placeholder="Press Calculate">
+				°<br>
+				<label style="width: 100px">Global Yaw</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="globalYaw" placeholder="Press Calculate">
+				°<br>
+
+				<label style="width: 100px">Airtime</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="airtime" placeholder="Press Calculate">
+				Seconds<br>
+				<label style="width: 100px">Precision</label>
+				<input readonly class="readonlyInput" type="number" size="20" id="precision" placeholder="Press Calculate">
+				%
+			</div>
 
 			<hr>
 
