@@ -220,8 +220,9 @@ function Calculate() {
     document.getElementById('localPitch').value = '-9999999999';
     document.getElementById('localYaw').value = '-9999999999';
 
-    document.getElementById('globalPitch').value = '10';
-    document.getElementById('globalYaw').value = '10';
-
-
+    document.getElementById('globalPitch').value = result[0].pitch;
+    document.getElementById('globalYaw').value = result[0].yaw;
+    
+    document.getElementById('airtime').value = result[0].airtime;
+    document.getElementById('precision').value = result[0].precision;
 }
