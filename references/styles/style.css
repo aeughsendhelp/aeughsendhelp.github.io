@@ -54,7 +54,7 @@ body {
 }
 
 /* used to allow for a scrollable background on the index */
-#maincontainer {
+#main-container {
 	background: var(--bggradient);
 	position: relative;
 	min-height: 100%;
@@ -120,7 +120,7 @@ hr {
 	margin-right: -20px;
 	color: var(--linkcolorhover);
 }
-.hrMin {
+.hr-min {
 	color: var(--bgcolor4);
 	margin-left: 0px;
 	margin-right: 0px;
@@ -260,7 +260,7 @@ footer {
 /* Text Overflow
 
  */
-.shrinkTextOverflow {
+.shrink-text-overflow {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-wrap: break-word;
@@ -304,7 +304,7 @@ footer {
 }
 
 /* Horizontal Scroll Menu */
-.horizontalscrollmenu {
+.horizontal-scroll-menu {
 	overflow-x: auto;
 	overflow-y: hidden;
 	width: 10000px;
@@ -315,7 +315,7 @@ footer {
 	-webkit-mask: var(--mask); 
 	mask: var(--mask);
 }
-.horizitem {
+.horiz-item {
 	display: block;
 	height: 300px;
 	width: 100%;
@@ -325,7 +325,7 @@ footer {
 }
 
 /* Vertical Item */
-.vertitem {
+.vert-item {
 	height: 100%;
 	width: 300px;
 	vertical-align: top;
@@ -342,10 +342,10 @@ footer {
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
 	color: var(--linkcolor);
 }
-.vertitem:hover {
+.vert-item:hover {
 	background-color: var(--bgcolor4);
 }
-.vertitem img {
+.vert-item img {
 	border-radius: 14px 14px 0px 0px;
 	object-fit: cover;
 	height: 60%;
@@ -355,7 +355,7 @@ footer {
 	left: 0px;
 	z-index: -1;
 }
-.vertitem h2 {
+.vert-item h2 {
 	text-align: center;
 	top: 8px;
 	left: 16px;
@@ -364,7 +364,7 @@ footer {
 	color: #ffffff;
 	text-shadow: 0px 0px 3px #000000;
 }
-.vertitem div {
+.vert-item div {
 	height: 100px;
 	color: var(--maincolor);
 	position: absolute;
@@ -373,7 +373,7 @@ footer {
 }
 
 /* Title Vertical Item */
-.titlevertitem {
+.title-vert-item {
 	height: 100%;
 	width: 60px;
 	vertical-align: top;
@@ -390,7 +390,7 @@ footer {
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
 	color: var(--linkcolor);
 }
-.titlevertitem h1 {
+.title-vert-item h1 {
 	margin: 0px;
 	text-align: center;
 	position: absolute;
@@ -400,7 +400,7 @@ footer {
 }
 
 /* Front Image */
-#frontimage { 
+#front-image { 
 	min-width: 100%;
 	min-height: 70vh;
 	display: flex;
@@ -409,13 +409,13 @@ footer {
 	margin: 0px;
 	padding: 0px;
 }
-#frontimage h1 {
+#front-image h1 {
 	color: #ffffffa1;
 	font-size: 100px;
 	text-shadow: 0px 0px 10px #000000;
 	z-index: 1;
 }
-#frontimage img {
+#front-image img {
 	z-index: 0;
 	position: fixed;
 	object-fit: cover;
@@ -437,11 +437,11 @@ footer {
 }
 
 /* Artillery */
-.artilleryoutput {
+.artillery-output {
 	display: inline-block;
 	width: 50%;
 }
-#pitchLimitNotif1, #pitchLimitNotif2, #artilleryerror {
+#pitch-limit-notif-1, #pitch-limit-notif-2, #artillery-error {
 	margin-left: 20px;
 	color: var(--errorcolor);
 	display: inline-block;

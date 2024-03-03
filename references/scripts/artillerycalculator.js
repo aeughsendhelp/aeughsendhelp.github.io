@@ -106,7 +106,8 @@ function BallisticsToTarget(cannon, target, power, directionBearing, length) {
         }
 
         if(deltaTimes.length === 0) {
-            throw new OutOfRangeException("The target is unreachable with your current cannon configuration !");
+            UnreachableConfig();
+            return null;
         }
 
         const [[deltaTime1, pitch1, airtime1], [deltaTime2, pitch2, airtime2]] = [getRoot(deltaTimes, 1), getRoot(deltaTimes, -1)];
@@ -137,8 +138,8 @@ function BallisticsToTarget(cannon, target, power, directionBearing, length) {
         }
 
         if (deltaTimes.length === 0) {
-            console.log("The target is unreachable with your current cannon configuration!")
-            // throw new OutOfRangeException("sdf");
+            UnreachableConfig();
+            return null;
         }
 
         const [deltaTime, pitch, airtime] = deltaTimes.sort((a, b) => a[0] - b[0])[0];
@@ -153,15 +154,15 @@ function BallisticsToTarget(cannon, target, power, directionBearing, length) {
     }
 
     if (pitch1 > 60.5) {
-        document.getElementById("pitchLimitNotif1").innerHTML = "Over 60°"
+        document.getElementById("pitch-limit-notif-1").innerHTML = "Over 60°"
     } else if (pitch1 < -29.5) {
-        document.getElementById("pitchLimitNotif1").innerHTML = "Under -30°"
+        document.getElementById("pitch-limit-notif-1").innerHTML = "Under -30°"
     }
 
     if (pitch2 > 60.5) {
-        document.getElementById("pitchLimitNotif2").innerHTML = "Over 60°"
+        document.getElementById("pitch-limit-notif-2").innerHTML = "Over 60°"
     } else if (pitch2 < -29.5) {
-        document.getElementById("pitchLimitNotif2").innerHTML = "Under -30°"
+        document.getElementById("pitch-limit-notif-2").innerHTML = "Under -30°"
     }
 
     const airtimeSeconds1 = airtime1 / 20;
@@ -202,29 +203,47 @@ function BallisticsToTarget(cannon, target, power, directionBearing, length) {
     }];
 }
 
+function UnreachableConfig() {
+    document.getElementById('artillery-error').innerHTML = "The target is unreachable with your current configuration!";
 
+    // Output 1
+    document.getElementById('pitch-1').value = null;
+    document.getElementById('global-yaw-1').value = null;
+    document.getElementById('local-yaw-1').value = null;
+    document.getElementById('airtime-1').value = null;
+    document.getElementById('precision-1').value = null;
+
+    // Output 2
+    document.getElementById('pitch-2').value = null;
+    document.getElementById('global-yaw-2').value = null;
+    document.getElementById('local-yaw-2').value = null;
+    document.getElementById('airtime-2').value = null;
+    document.getElementById('precision-2').value = null;
+
+    throw "The target is unreachable with your current cannon configuration!";
+}
 
 function Calculate() {
-    document.getElementById('artilleryerror').innerHTML = ""
-    document.getElementById("pitchLimitNotif1").innerHTML = ""
-    document.getElementById("pitchLimitNotif2").innerHTML = ""
+    document.getElementById('artillery-error').innerHTML = "";
+    document.getElementById("pitch-limit-notif-1").innerHTML = "";
+    document.getElementById("pitch-limit-notif-2").innerHTML = "";
 
     // This sucks. I hate how I did this.
     // it works tho
-    const cannonOffset = [Number(document.getElementById('cannonOffsetX').value), 
-                        Number(document.getElementById('cannonOffsetY').value), 
-                        Number(document.getElementById('cannonOffsetZ').value)];
-    const chargeNumber = document.getElementById('chargeNumber').value;
-    const cannonLength = document.getElementById('cannonLength').value;
+    const cannonOffset = [Number(document.getElementById('cannon-offset-x').value), 
+                        Number(document.getElementById('cannon-offset-y').value), 
+                        Number(document.getElementById('cannon-offset-z').value)];
+    const chargeNumber = document.getElementById('charge-number').value;
+    const cannonLength = document.getElementById('cannon-length').value;
 
-    const initialCoords = [Number(document.getElementById('initialCoordsX').value), 
-                        Number(document.getElementById('initialCoordsY').value), 
-                        Number(document.getElementById('initialCoordsZ').value)];
-    const initialMountBearing = document.getElementById('initialMountBearing').value;
+    const initialCoords = [Number(document.getElementById('initial-coords-x').value), 
+                        Number(document.getElementById('initial-coords-y').value), 
+                        Number(document.getElementById('initial-coords-z').value)];
+    const initialMountBearing = document.getElementById('initial-mount-bearing').value;
 
-    const targetCoords = [Number(document.getElementById('targetCoordsX').value), 
-                        Number(document.getElementById('targetCoordsY').value), 
-                        Number(document.getElementById('targetCoordsZ').value)];
+    const targetCoords = [Number(document.getElementById('target-coords-x').value), 
+                        Number(document.getElementById('target-coords-y').value), 
+                        Number(document.getElementById('target-coords-z').value)];
 
 
     const cannonCoords = [initialCoords[0] + cannonOffset[0], 
@@ -233,7 +252,7 @@ function Calculate() {
 
 
     if(!cannonOffset || !chargeNumber || !cannonLength || !initialCoords || !initialMountBearing || !targetCoords) {
-        document.getElementById('artilleryerror').innerHTML = "bro doesn't know how to enter a number 💀"
+        document.getElementById('artillery-error').innerHTML = "bro doesn't know how to enter a number 💀";
         return;
     }
 
@@ -241,16 +260,16 @@ function Calculate() {
     console.log(result);
 
     // Output 1
-    document.getElementById('pitch1').value = result[0].pitch;
-    document.getElementById('globalYaw1').value = result[0].yaw + initialMountBearing;
-    document.getElementById('localYaw1').value = result[0].yaw;
-    document.getElementById('airtime1').value = result[0].airtime;
-    document.getElementById('precision1').value = result[0].precision;
+    document.getElementById('pitch-1').value = result[0].pitch;
+    document.getElementById('global-yaw-1').value = result[0].yaw + initialMountBearing;
+    document.getElementById('local-yaw-1').value = result[0].yaw;
+    document.getElementById('airtime-1').value = result[0].airtime;
+    document.getElementById('precision-1').value = result[0].precision;
 
     // Output 2
-    document.getElementById('pitch2').value = result[1].pitch;
-    document.getElementById('globalYaw2').value = result[1].yaw + initialMountBearing;
-    document.getElementById('localYaw2').value = result[1].yaw;
-    document.getElementById('airtime2').value = result[1].airtime;
-    document.getElementById('precision2').value = result[1].precision;
+    document.getElementById('pitch-2').value = result[1].pitch;
+    document.getElementById('global-yaw-2').value = result[1].yaw + initialMountBearing;
+    document.getElementById('local-yaw-2').value = result[1].yaw;
+    document.getElementById('airtime-2').value = result[1].airtime;
+    document.getElementById('precision-2').value = result[1].precision;
 }
