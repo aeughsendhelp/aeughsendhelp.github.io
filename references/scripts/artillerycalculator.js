@@ -205,6 +205,7 @@ function BallisticsToTarget(cannon, target, power, directionBearing, length) {
 
 
 function Calculate() {
+    document.getElementById('artilleryerror').innerHTML = ""
     document.getElementById("pitchLimitNotif1").innerHTML = ""
     document.getElementById("pitchLimitNotif2").innerHTML = ""
 
@@ -229,6 +230,12 @@ function Calculate() {
     const cannonCoords = [initialCoords[0] + cannonOffset[0], 
                         initialCoords[1] + cannonOffset[1], 
                         initialCoords[2] + cannonOffset[2]];
+
+
+    if(!cannonOffset || !chargeNumber || !cannonLength || !initialCoords || !initialMountBearing || !targetCoords) {
+        document.getElementById('artilleryerror').innerHTML = "bro doesn't know how to enter a number 💀"
+        return;
+    }
 
     const result = BallisticsToTarget(cannonCoords, targetCoords, chargeNumber, initialMountBearing, cannonLength);
     console.log(result);

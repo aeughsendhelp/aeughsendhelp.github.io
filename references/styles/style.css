@@ -11,10 +11,10 @@
 		to bottom right,  
 		var(--bgcolor), var(--bgcolor2)
 	);
-	--maincolor: #ceb992;
-	--maincolor2: #769782;
-	--linkcolor: #769782;
-	--linkcolorhover: #5f806b;
+	--maincolor: #b2c0c5;
+	--maincolor2: #a7c5d1;
+	--linkcolor: #8bc0d4;
+	--linkcolorhover: #71a5b8;
 	--linkcoloragain: #35423a;
 	--errorcolor: #f12a45;
 
@@ -67,7 +67,7 @@ body {
 	padding-top: 80px;
 }
 
-/* Basic styling */
+/* ----------------------------- Basic styling -------------------------------------------------------------------*/ 
 /* Paragraph */
 p {
 	line-height: 1.5;
@@ -247,7 +247,7 @@ footer {
 	text-align: center;
 }
 
-/* Shizzle Mcnizzle */
+/* ----------------------------- Shizzle Mcnizzle -------------------------------------------------------------------*/ 
 /* Text Overflow
 
  */
@@ -287,6 +287,7 @@ footer {
 	border-style: solid;
 	border-color: #00000000;
 	transition-duration: var(--transitionms);
+	border-width: 2px;
 }
 #navbar a:hover {
 	border-color: var(--linkcolorhover);
@@ -427,14 +428,11 @@ footer {
 }
 
 /* Artillery */
-/* Artillery Output */
 .artilleryoutput {
 	display: inline-block;
 	width: 50%;
 }
-/* Pitch Limit Notification */
-#pitchLimitNotif1,
-#pitchLimitNotif2 {
+#pitchLimitNotif1, #pitchLimitNotif2, #artilleryerror {
 	margin-left: 20px;
 	color: var(--errorcolor);
 	display: inline-block;
