@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+/* Variables */
 :root {
 	--bgcolor: #2a2b2e;
 	--bgcolor2: #1b1c1f;
@@ -7,18 +8,19 @@
 	--bgcolor4: #1a1c1f6b;
 	--bgcolorhover: #1a1c1f;
 	--bggradient: linear-gradient(
-        to bottom right,  
-        var(--bgcolor), var(--bgcolor2)
-    );
+		to bottom right,  
+		var(--bgcolor), var(--bgcolor2)
+	);
 	--maincolor: #ceb992;
 	--maincolor2: #769782;
 	--linkcolor: #769782;
 	--linkcolorhover: #5f806b;
 	--linkcoloragain: #35423a;
+	--errorcolor: #f12a45;
 
 	--fontsize: 16px;
 	--transitionms: 150ms;
-	--borderradius: 10px
+	--borderradius: 10px;
 }
 
 /* Highlight color */
@@ -26,14 +28,14 @@
 	background: #131313;
 }
 
+/* Main styling */
 html {
 	height: 100%;
 	width: 100%;
 	padding: 0;
 	margin: 0;
 	scrollbar-color: var(--bgcolor) var(--bgcolorhover);
-	font-family: 'Roboto', Geneva, sans-serif, "Comic Sans Ms"; /* comic sans is awdesome */
-	
+	font-family: 'Roboto', Geneva, sans-serif, "Comic Sans Ms"; /* Comic Sans is awesome */
 	color: var(--maincolor);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -47,37 +49,32 @@ html {
 
 body {
 	margin: 0px;
+	background: var(--bggradient);
+	box-shadow: 0px 0px 10px var(--bgcolorhover);
+
 }
 
-#maincontainer {
-	background: var(--bggradient);
+/* Main content area */
+#main {
 	position: relative;
 	min-height: 100%;
 	flex-direction: column;
 	padding: 0px;
-
-	/* top: -21px; i dont understand why i need this but it makes it work */
-	box-shadow: 0px 0px 10px var(--bgcolorhover);
 	min-height: 100vh;
-}
-
-#main {
 	font-size: var(--fontsize);
 	margin-left: 12%;
 	margin-right: 12%;
 	padding-top: 80px;
 }
 
-/* Basic styling -----------------------------------------------------------------------------------------------------------------------*/
-
+/* Basic styling */
+/* Paragraph */
 p {
 	line-height: 1.5;
 	white-space: normal;
-	/* margin-left: 20px; */
-	/* margin-right: 20px; */
 }
 
-
+/* Link */
 a {
 	color: var(--linkcolor);
 	text-decoration: none;
@@ -88,24 +85,25 @@ a:hover {
 	text-decoration: none;
 }
 
-h1 {
+/* Headings */
+h1, h2, h3 {
 	font-weight: 200;
-	color: var(--maincolor2);
 	line-height: 1em;
+}
+h1 {
+	color: var(--maincolor2);
 }
 h2 {
 	font-weight: 200;
 	color: var(--linkcolor);
 	padding: 0em;
-	line-height: 1em;
 }
 h3 {
 	font-weight: 200;
 	color: var(--linkcolorhover);
-	line-height: 1em;
 }
 
-
+/* Horizontal Rule */
 hr {
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -113,19 +111,15 @@ hr {
 	margin-right: -20px;
 	color: var(--linkcolorhover);
 }
-
 .hrMin {
 	color: var(--bgcolor4);
 	margin-left: 0px;
 	margin-right: 0px;
 }
 
-
+/* Iframe */
 iframe {
 	border-radius: var(--borderradius);
-}
-
-iframe {
 	color: var(--linkcolor);
 	border-radius: var(--borderradius);
 	border-color: var(--bgcolor);
@@ -133,30 +127,31 @@ iframe {
 	border-width: 3px;
 	background-color: #00000000;
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
-	transition-duration: var(--transitionms)
+	transition-duration: var(--transitionms);
 }
 iframe:hover {
-    border-color: var(--linkcolorhover);
+	border-color: var(--linkcolorhover);
 }
 iframe:active {
-    background: var(--linkcolorhover);
+	background: var(--linkcolorhover);
 }
 
+/* Table */
 table {
 	border-collapse: collapse; 
 	border-radius:  var(--borderradius);
 	border-style: hidden;
 }
 table tr {
-	border: 0px solid var(--bgcolor2); /* set to 3 to show border */
+	border: 0px solid var(--bgcolor2);
 	padding: 10px;
 }
 table td {
-	border: 0px solid var(--bgcolor2); /* set to 3 to show border */
+	border: 0px solid var(--bgcolor2);
 	padding: 10px;
 }
 
-
+/* List */
 ul {
 	list-style-type: none;
 	padding: 0;
@@ -169,7 +164,7 @@ li {
 	white-space: normal;
 }
 
-
+/* Button */
 button {
 	color: var(--linkcolor);
 	padding: 10px;
@@ -182,13 +177,13 @@ button {
 	outline: None;
 }
 button:hover {
-    border-color: var(--linkcolorhover);
+	border-color: var(--linkcolorhover);
 }
 button:active {
-    background: var(--linkcolorhover);
+	background: var(--linkcolorhover);
 }
 
-
+/* Input */
 input {
 	padding: 5px;
 	margin-top: 5px;
@@ -199,15 +194,14 @@ input {
 	border-style: solid;
 	background-color: #00000000;
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
-	/* background: var(--linkcolor); */
 	transition-duration: var(--transitionms);
 	outline: None;
 }
 input:hover {
-    border: 2px solid var(--linkcolorhover);
+	border: 2px solid var(--linkcolorhover);
 }
 input:focus {
-    border: 2px solid var(--linkcolor);
+	border: 2px solid var(--linkcolor);
 }
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
@@ -217,6 +211,7 @@ input[type=number] {
 	-moz-appearance: textfield;
 }
 
+/* Readonly input */
 .readonlyInput:hover {
 	border: 2px solid var(--linkcoloragain);
 }
@@ -224,13 +219,13 @@ input[type=number] {
 	border: 2px solid var(--linkcoloragain);
 }
 
+/* Label */
 label {
 	display: inline-block;
-	/* width: 120px; */
-	/* text-align: right; */
 	margin-right: 10px;
 }
 
+/* Select */
 select {
 	padding: 5px;
 	margin-top: 5px;
@@ -240,13 +235,10 @@ select {
 	border-color: var(--bgcolor);
 	border-style: solid;
 	box-shadow: 0px 0px 10px var(--bgcolorhover);
-	transition-duration: var(--transitionms)
-}
-select a:hover {
-    border: 2px solid var(--linkcolorhover);
-    background: var(--linkcolor);
+	transition-duration: var(--transitionms);
 }
 
+/* Footer */
 footer {
 	flex-grow: 0;
 	flex-shrink: 0;
@@ -255,18 +247,20 @@ footer {
 	text-align: center;
 }
 
+/* Shizzle Mcnizzle */
+/* Text Overflow
 
-/* Shizzle Mcnizzle -----------------------------------------------------------------------------------------------------------------------*/
-
+ */
 .shrinkTextOverflow {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-wrap: break-word;
 	display: block;
-	line-height: 1em; /* a */
-	max-height: 2em; /* a x number of line to show (ex : 2 line)  */
+	line-height: 1em;
+	max-height: 2em;
 }
 
+/* Navbar */
 #navbar {
 	height: 50px;
 	width: 100%;
@@ -289,17 +283,17 @@ footer {
 	padding: 10px 20px;
 	text-decoration: none;
 	transition: 0.4s; 
-    border-radius: 5px;
+	border-radius: 5px;
 	border-style: solid;
 	border-color: #00000000;
-	transition-duration: var(--transitionms)
+	transition-duration: var(--transitionms);
 }
 #navbar a:hover {
 	border-color: var(--linkcolorhover);
 	background-color: var(--bgcolor3);
 }
 
-
+/* Horizontal Scroll Menu */
 .horizontalscrollmenu {
 	overflow-x: auto;
 	overflow-y: hidden;
@@ -316,10 +310,11 @@ footer {
 	height: 300px;
 	width: 100%;
 	text-align: left;
-
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
+
+/* Vertical Item */
 .vertitem {
 	height: 100%;
 	width: 300px;
@@ -328,7 +323,6 @@ footer {
 	position: relative;
 	text-align: center;
 	white-space: normal;
-
 	margin-bottom: 20px;
 	min-height: 300px;
 	border-radius: var(--borderradius);
@@ -342,8 +336,7 @@ footer {
 	background-color: var(--bgcolor4);
 }
 .vertitem img {
-	/* position: absolute; */
-	border-radius: 14px 14px 0px 0px;;
+	border-radius: 14px 14px 0px 0px;
 	object-fit: cover;
 	height: 60%;
 	width: 100%;
@@ -358,7 +351,6 @@ footer {
 	left: 16px;
 	white-space: pre;
 	position: static;
-	/* mix-blend-mode: difference; */
 	color: #ffffff;
 	text-shadow: 0px 0px 3px #000000;
 }
@@ -368,9 +360,9 @@ footer {
 	position: absolute;
 	bottom: 0px;
 	margin-left: 10px;
-	/* margin-bottom: 10px; */
 }
 
+/* Title Vertical Item */
 .titlevertitem {
 	height: 100%;
 	width: 60px;
@@ -379,9 +371,7 @@ footer {
 	text-align: left;
 	position: relative;
 	text-align: center;
-
 	margin-left: 10px;
-
 	min-height: 300px;
 	border-radius: var(--borderradius);
 	border-color: var(--bgcolor);
@@ -393,14 +383,13 @@ footer {
 .titlevertitem h1 {
 	margin: 0px;
 	text-align: center;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
 	transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
-
 }
 
+/* Front Image */
 #frontimage { 
 	min-width: 100%;
 	min-height: 70vh;
@@ -411,7 +400,6 @@ footer {
 	padding: 0px;
 }
 #frontimage h1 {
-	/* mix-blend-mode: difference; */
 	color: #ffffffa1;
 	font-size: 100px;
 	text-shadow: 0px 0px 10px #000000;
@@ -425,31 +413,37 @@ footer {
 	width: 100vw;
 }
 
-
+/* Projects */
 #projects {
 	width: 100%;
 	padding-top: 10px;
 }
 #projects a:hover {
-    border-color: var(--linkcolorhover);
+	border-color: var(--linkcolorhover);
 	border-style: solid;
 }
 #project a:active {
-    background: var(--linkcolorhover);
+	background: var(--linkcolorhover);
 }
 
-
 /* Artillery */
-
+/* Artillery Output */
 .artilleryoutput {
 	display: inline-block;
 	width: 50%;
 }
+/* Pitch Limit Notification */
+#pitchLimitNotif1,
+#pitchLimitNotif2 {
+	margin-left: 20px;
+	color: var(--errorcolor);
+	display: inline-block;
+}
 
+/* Media Query for Artillery Output */
 @media only screen and (max-width: 1026px) {
-    .artilleryoutput {
+	.artilleryoutput {
 		display: block;
-
 		width: 100%;
-    }
+	}
 }

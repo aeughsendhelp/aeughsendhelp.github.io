@@ -12,7 +12,6 @@
 		<script src="../references/scripts/artillerycalculator.js"></script>
 	</head>
 	<body>
-		<div id="maincontainer">
 		<div id="main">
 			<h1>
 				Artillery Calculator
@@ -26,32 +25,42 @@
 			<h2>Parameters</h2>
 
 			<label style="width: 170px">Cannon Offset:</label>
-			<input type="number" size="10" placeholder="x">
-			<input type="number" size="10" placeholder="y">
-			<input type="number" size="10" placeholder="z">
-			<br>
-
-			<label style="width: 170px">Cannon Mount Rotation:</label>
-			<input type="number" size="10" placeholder="Degrees">
-			<br>
-
-			<label style="width: 170px">Initial Coordinates:</label>
-			<input type="number" size="10" placeholder="x">
-			<input type="number" size="10" placeholder="y">
-			<input type="number" size="10" placeholder="z">
-			
-			<hr class="hrMin">
-
-			<label style="width: 170px">Target Coordinates:</label> 
-			<input type="number" size="10" placeholder="x">
-			<input type="number" size="10" placeholder="y">
-			<input type="number" size="10" placeholder="z">
+			<input type="number" size="10" placeholder="x" id="cannonOffsetX">
+			<input type="number" size="10" placeholder="y" id="cannonOffsetY">
+			<input type="number" size="10" placeholder="z" id="cannonOffsetZ">
 			<br>
 
 			<label style="width: 170px">Number of Charges:</label>
-			<input type="number" size="10" placeholder="Charges">
+			<input type="number" size="10" placeholder="Charges" id="chargeNumber">
+			<br>
+
+			<label style="width: 170px">Cannon Length:</label>
+			<input type="number" size="10" placeholder="Charges" id="cannonLength">
+
+
+			<hr class="hrMin">
+
+			<label style="width: 170px">Initial Coordinates:</label>
+			<input type="number" size="10" placeholder="x" id="initialCoordsX">
+			<input type="number" size="10" placeholder="y" id="initialCoordsY">
+			<input type="number" size="10" placeholder="z" id="initialCoordsZ">
+			<br>
+
+			<label style="width: 170px">Initial Mount Bearing:</label>
+			<input type="number" size="10" placeholder="Degrees" id="initialMountBearing">
+			<br>
+
+
+			<hr class="hrMin">
+
+			<label style="width: 170px">Target Coordinates:</label> 
+			<input type="number" size="10" placeholder="x" id="targetCoordsX">
+			<input type="number" size="10" placeholder="y" id="targetCoordsY">
+			<input type="number" size="10" placeholder="z" id="targetCoordsZ">
 			<br>
 			<br>
+
+
 
 			<button onclick="Calculate()" width="50px">Calculate</button>
 
@@ -60,50 +69,42 @@
 			<div class="artilleryoutput">
 				<h2>Trajectory 1</h2>
 
-				<label style="width: 100px">Local Pitch</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="localPitch" placeholder="Press Calculate">
+				<label style="width: 100px">Pitch</label>
+				<input readonly class="readonlyInput" size="20" id="pitch1" placeholder="Press Calculate">
+				°<div id="pitchLimitNotif1"></div><br>
+				<label style="width: 100px">Global Yaw</label>
+				<input readonly class="readonlyInput" size="20" id="globalYaw1" placeholder="Press Calculate">
 				°<br>
 				<label style="width: 100px">Local Yaw</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="localYaw" placeholder="Press Calculate">
+				<input readonly class="readonlyInput" size="20" id="localYaw1" placeholder="Press Calculate">
 				°<br>
-
-				<label style="width: 100px">Global Pitch</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="globalPitch" placeholder="Press Calculate">
-				°<br>
-				<label style="width: 100px">Global Yaw</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="globalYaw" placeholder="Press Calculate">
-				°<br>
-
+			
 				<label style="width: 100px">Airtime</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="airtime" placeholder="Press Calculate">
+				<input readonly class="readonlyInput" size="20" id="airtime1" placeholder="Press Calculate">
 				Seconds<br>
 				<label style="width: 100px">Precision</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="precision" placeholder="Press Calculate">
+				<input readonly class="readonlyInput" size="20" id="precision1" placeholder="Press Calculate">
 				%
 			</div>
 
 			<div class="artilleryoutput">
 				<h2>Trajectory 2</h2>
 
-				<label style="width: 100px">Local Pitch</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="localPitch" placeholder="Press Calculate">
+				<label style="width: 100px">Pitch</label>
+				<input readonly class="readonlyInput" size="20" id="pitch2" placeholder="Press Calculate">
+				°<div id="pitchLimitNotif2"></div><br>
+				<label style="width: 100px">Global Yaw</label>
+				<input readonly class="readonlyInput" ize="20" id="globalYaw2" placeholder="Press Calculate">
 				°<br>
 				<label style="width: 100px">Local Yaw</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="localYaw" placeholder="Press Calculate">
+				<input readonly class="readonlyInput" size="20" id="localYaw2" placeholder="Press Calculate">
 				°<br>
-
-				<label style="width: 100px">Global Pitch</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="globalPitch" placeholder="Press Calculate">
-				°<br>
-				<label style="width: 100px">Global Yaw</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="globalYaw" placeholder="Press Calculate">
-				°<br>
-
+			
 				<label style="width: 100px">Airtime</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="airtime" placeholder="Press Calculate">
+				<input readonly class="readonlyInput" size="20" id="airtime2" placeholder="Press Calculate">
 				Seconds<br>
 				<label style="width: 100px">Precision</label>
-				<input readonly class="readonlyInput" type="number" size="20" id="precision" placeholder="Press Calculate">
+				<input readonly class="readonlyInput" size="20" id="precision2" placeholder="Press Calculate">
 				%
 			</div>
 
@@ -117,11 +118,10 @@
 				<li>Enter the coordinates of the target.</li>
 				<li>Enter the amount of powder charges you want to use.</li>
 				<li>Press Calculate.</li>
-				<li>After getting the degrees, input them into your cannon. If you're just eyeballing the rotation of the cannon, use the global space rotation. If you're putting them in through computercraft or whatever, use the local space rotation.</li>
+				<li>After getting the degrees, input them into your cannon. If you're just eyeballing the rotation of the cannon, use the global rotation. If you're putting them in through computercraft or whatever, use the local rotation.</li>
 			</ol>
 
 			<div id="footer"></div>
-		</div>
 		</div>
 
 		<div id="navbar"></div>
