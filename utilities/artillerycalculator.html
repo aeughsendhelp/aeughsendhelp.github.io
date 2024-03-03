@@ -14,7 +14,7 @@
 	<body>
 		<div id="main">
 			<h1>
-				CBC Tank Artillery Calculator
+				Artillery Calculator
 			</h1>
 			<!-- <p>
 				Made for big cannons on valk skies tanks
@@ -25,86 +25,86 @@
 			<h2>Parameters</h2>
 
 			<label style="width: 170px">Cannon Offset:</label>
-			<input type="number" size="10" placeholder="x" id="cannonOffsetX">
-			<input type="number" size="10" placeholder="y" id="cannonOffsetY">
-			<input type="number" size="10" placeholder="z" id="cannonOffsetZ">
+			<input type="number" size="10" placeholder="x" id="cannon-offset-x">
+			<input type="number" size="10" placeholder="y" id="cannon-offset-y">
+			<input type="number" size="10" placeholder="z" id="cannon-offset-z">
 			<br>
 
 			<label style="width: 170px">Number of Charges:</label>
-			<input type="number" size="10" placeholder="Charges" id="chargeNumber">
+			<input type="number" size="10" placeholder="Charges" id="charge-number">
 			<br>
 
 			<label style="width: 170px">Cannon Length:</label>
-			<input type="number" size="10" placeholder="Charges" id="cannonLength">
+			<input type="number" size="10" placeholder="Charges" id="cannon-length">
 
 
-			<hr class="hrMin">
+			<hr class="hr-min">
 
 			<label style="width: 170px">Initial Coordinates:</label>
-			<input type="number" size="10" placeholder="x" id="initialCoordsX">
-			<input type="number" size="10" placeholder="y" id="initialCoordsY">
-			<input type="number" size="10" placeholder="z" id="initialCoordsZ">
+			<input type="number" size="10" placeholder="x" id="initial-coords-x">
+			<input type="number" size="10" placeholder="y" id="initial-coords-y">
+			<input type="number" size="10" placeholder="z" id="initial-coords-z">
 			<br>
 
 			<label style="width: 170px">Initial Mount Bearing:</label>
-			<input type="number" size="10" placeholder="Degrees" id="initialMountBearing">
+			<input type="number" size="10" placeholder="Degrees" id="initial-mount-bearing">
 			<br>
 
 
-			<hr class="hrMin">
+			<hr class="hr-min">
 
 			<label style="width: 170px">Target Coordinates:</label> 
-			<input type="number" size="10" placeholder="x" id="targetCoordsX">
-			<input type="number" size="10" placeholder="y" id="targetCoordsY">
-			<input type="number" size="10" placeholder="z" id="targetCoordsZ">
+			<input type="number" size="10" placeholder="x" id="target-coords-x">
+			<input type="number" size="10" placeholder="y" id="target-coords-y">
+			<input type="number" size="10" placeholder="z" id="target-coords-z">
 			<br>
 			<br>
 
 			<button onclick="Calculate()" width="50px">Calculate</button>
 
-			<div id="artilleryerror"></div>
+			<div id="artillery-error"></div>
 
-			<hr class="hrMin">
+			<hr class="hr-min">
 
-			<div class="artilleryoutput">
+			<div class="artillery-output">
 				<h2>Trajectory 1</h2>
 
 				<label style="width: 100px">Pitch</label>
-				<input readonly class="readonlyInput" size="20" id="pitch1" placeholder="Press Calculate">
-				°<div id="pitchLimitNotif1"></div><br>
+				<input readonly class="readonly-input" size="20" id="pitch-1" placeholder="Press Calculate">
+				°<div id="pitch-limit-notif-1"></div><br>
 				<label style="width: 100px">Global Yaw</label>
-				<input readonly class="readonlyInput" size="20" id="globalYaw1" placeholder="Press Calculate">
+				<input readonly class="readonly-input" size="20" id="global-yaw-1" placeholder="Press Calculate">
 				°<br>
 				<label style="width: 100px">Local Yaw</label>
-				<input readonly class="readonlyInput" size="20" id="localYaw1" placeholder="Press Calculate">
+				<input readonly class="readonly-input" size="20" id="local-yaw-1" placeholder="Press Calculate">
 				°<br>
 			
 				<label style="width: 100px">Airtime</label>
-				<input readonly class="readonlyInput" size="20" id="airtime1" placeholder="Press Calculate">
+				<input readonly class="readonly-input" size="20" id="airtime-1" placeholder="Press Calculate">
 				Seconds<br>
 				<label style="width: 100px">Precision</label>
-				<input readonly class="readonlyInput" size="20" id="precision1" placeholder="Press Calculate">
+				<input readonly class="readonly-input" size="20" id="precision-1" placeholder="Press Calculate">
 				%
 			</div>
 
-			<div class="artilleryoutput">
+			<div class="artillery-output">
 				<h2>Trajectory 2</h2>
 
 				<label style="width: 100px">Pitch</label>
-				<input readonly class="readonlyInput" size="20" id="pitch2" placeholder="Press Calculate">
-				°<div id="pitchLimitNotif2"></div><br>
+				<input readonly class="readonly-input" size="20" id="pitch-2" placeholder="Press Calculate">
+				°<div id="pitch-limit-notif-2"></div><br>
 				<label style="width: 100px">Global Yaw</label>
-				<input readonly class="readonlyInput" ize="20" id="globalYaw2" placeholder="Press Calculate">
+				<input readonly class="readonly-input" ize="20" id="global-yaw-2" placeholder="Press Calculate">
 				°<br>
 				<label style="width: 100px">Local Yaw</label>
-				<input readonly class="readonlyInput" size="20" id="localYaw2" placeholder="Press Calculate">
+				<input readonly class="readonly-input" size="20" id="local-yaw-2" placeholder="Press Calculate">
 				°<br>
 			
 				<label style="width: 100px">Airtime</label>
-				<input readonly class="readonlyInput" size="20" id="airtime2" placeholder="Press Calculate">
+				<input readonly class="readonly-input" size="20" id="airtime-2" placeholder="Press Calculate">
 				Seconds<br>
 				<label style="width: 100px">Precision</label>
-				<input readonly class="readonlyInput" size="20" id="precision2" placeholder="Press Calculate">
+				<input readonly class="readonly-input" size="20" id="precision-2" placeholder="Press Calculate">
 				%
 			</div>
 
