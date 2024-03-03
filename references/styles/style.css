@@ -34,7 +34,6 @@ html {
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	scrollbar-color: var(--bgcolor) var(--bgcolorhover);
 	font-family: 'Roboto', Geneva, sans-serif, "Comic Sans Ms"; /* Comic Sans is awesome */
 	color: var(--maincolor);
 	background-repeat: no-repeat;
@@ -45,7 +44,12 @@ html {
 	white-space: nowrap;
 	background-color: #000000;
 	overscroll-behavior: None;
+
+	scrollbar-color: var(--bgcolor) var(--bgcolorhover);
+	scrollbar-width: thin;
+	/* scrollbar */
 }
+
 
 body {
 	margin: 0px;
@@ -118,7 +122,7 @@ hr {
 	margin-bottom: 30px;
 	margin-left: -20px;
 	margin-right: -20px;
-	color: var(--linkcolorhover);
+	border-color: var(--linkcolorhover);
 }
 .hr-min {
 	color: var(--bgcolor4);
@@ -410,7 +414,7 @@ footer {
 	padding: 0px;
 }
 #front-image h1 {
-	color: #ffffffa1;
+	color: #ffffffa2;
 	font-size: 100px;
 	text-shadow: 0px 0px 10px #000000;
 	z-index: 1;
@@ -449,7 +453,7 @@ footer {
 
 /* Media Query for Artillery Output */
 @media only screen and (max-width: 1026px) {
-	.artilleryoutput {
+	.artillery-output {
 		display: block;
 		width: 100%;
 	}
