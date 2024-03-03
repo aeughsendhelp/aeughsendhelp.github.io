@@ -168,17 +168,34 @@ function BallisticsToTarget(cannon, target, power, directionBearing, length) {
     const airtimeSeconds1 = airtime1 / 20;
     const airtimeSeconds2 = airtime2 / 20;
 
-    yaw = (yaw + directionBearing) % 360;
+    // get the smallest positive angle that's coterminal with directionBearing
+    // this while loop slows things down significantly
+    // while (directionBearing < 0) {
+    //     directionBearing += 360;
+    // }
+    // directionBearing %= 360;
 
-    // if (direction === "north") {
+    //East is 0 in these calculations, but east is -90 in game
+    // directionBearing += 90;
+
+    // (value + 180) % 360 === 0 ? value : (value + 180) % 360 - 180;
+
+    beared = (180 - directionBearing) + 90
+
+    yaw = ((yaw + beared) % 360)* -1;
+
+    console.log();
+
+    // if (directionBearing === "north") {
     //     yaw = (yaw + 90) % 360;
-    // } else if (direction === "west") {
+    // } else if (directionBearing === "west") {
     //     yaw = (yaw + 180) % 360;
-    // } else if (direction === "south") {
+    // } else if (directionBearing === "south") {
     //     yaw = (yaw + 270) % 360;
-    // } else if (direction !== "east") {
+    // } else if (directionBearing !== "east") {
     //     return "Invalid direction";
     // }
+
 
     const fuzeTime1 = Math.floor(airtime1 + (deltaTime1 / 2) - 10);
     const fuzeTime2 = Math.floor(airtime2 + (deltaTime2 / 2) - 10);
@@ -202,6 +219,7 @@ function BallisticsToTarget(cannon, target, power, directionBearing, length) {
         precision: precision2,
     }];
 }
+
 
 function UnreachableConfig() {
     document.getElementById('artillery-error').innerHTML = "The target is unreachable with your current configuration!";
@@ -239,7 +257,7 @@ function Calculate() {
     const initialCoords = [Number(document.getElementById('initial-coords-x').value), 
                         Number(document.getElementById('initial-coords-y').value), 
                         Number(document.getElementById('initial-coords-z').value)];
-    const initialMountBearing = document.getElementById('initial-mount-bearing').value;
+    const initialMountBearing = Number(document.getElementById('initial-mount-bearing').value);
 
     const targetCoords = [Number(document.getElementById('target-coords-x').value), 
                         Number(document.getElementById('target-coords-y').value), 
@@ -251,7 +269,7 @@ function Calculate() {
                         initialCoords[2] + cannonOffset[2]];
 
 
-    if(!cannonOffset || !chargeNumber || !cannonLength || !initialCoords || !initialMountBearing || !targetCoords) {
+    if(!cannonOffset || !chargeNumber || !cannonLength || !initialCoords /*|| !initialMountBearing*/ || !targetCoords) {
         document.getElementById('artillery-error').innerHTML = "bro doesn't know how to enter a number 💀";
         return;
     }
@@ -261,15 +279,27 @@ function Calculate() {
 
     // Output 1
     document.getElementById('pitch-1').value = result[0].pitch;
-    document.getElementById('global-yaw-1').value = result[0].yaw + initialMountBearing;
-    document.getElementById('local-yaw-1').value = result[0].yaw;
-    document.getElementById('airtime-1').value = result[0].airtime;
+    document.getElementById('global-yaw-1').value = null //result[0].yaw + initialMountBearing;
+    document.getElementById('local-yaw-1').value = ConvertToGoodAngle(result[0].yaw);
+    document.getElementById('airtime-1').value = result[0].airtimeSeconds;
     document.getElementById('precision-1').value = result[0].precision;
 
     // Output 2
     document.getElementById('pitch-2').value = result[1].pitch;
-    document.getElementById('global-yaw-2').value = result[1].yaw + initialMountBearing;
-    document.getElementById('local-yaw-2').value = result[1].yaw;
-    document.getElementById('airtime-2').value = result[1].airtime;
+    document.getElementById('global-yaw-2').value = null //result[1].yaw + initialMountBearing;
+    document.getElementById('local-yaw-2').value = ConvertToGoodAngle(result[1].yaw);
+    document.getElementById('airtime-2').value = result[1].airtimeSeconds;
     document.getElementById('precision-2').value = result[1].precision;
+}
+
+// Doesn't account for if the angle is coterminal and greater than 360 but if that happens then somethings gone wrong or user error and the users can go fuck themselves
+function ConvertToGoodAngle(angle) {
+    console.log(angle);
+    if(angle > 180) {
+        angle -= 360
+    }
+    if(angle < -180) {
+        angle += 360
+    }
+    return angle;
 }
