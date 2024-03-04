@@ -350,7 +350,7 @@ footer {
 	background-color: var(--bgcolor4);
 }
 .vert-item img {
-	border-radius: 14px 14px 0px 0px;
+	border-radius: var(--borderradius) var(--borderradius) 0px 0px;
 	object-fit: cover;
 	height: 60%;
 	width: 100%;
