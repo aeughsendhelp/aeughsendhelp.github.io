@@ -1,3 +1,14 @@
+// Doesn't account for if the angle is coterminal and greater than 360 but if that happens then somethings gone wrong or user error and the users can go fuck themselves
+function ConvertToGoodAngle(angle) {
+    if(angle > 180) {
+        angle -= 360
+    }
+    if(angle < -180) {
+        angle += 360
+    }
+    return angle;
+}
+
 function myLinspace(start, end, num) {
     const answer = [start];
     const delta = (end - start) / num;
@@ -168,24 +179,12 @@ function BallisticsToTarget(cannon, target, power, directionBearing, length) {
     const airtimeSeconds1 = airtime1 / 20;
     const airtimeSeconds2 = airtime2 / 20;
 
-    // get the smallest positive angle that's coterminal with directionBearing
-    // this while loop slows things down significantly
-    // while (directionBearing < 0) {
-    //     directionBearing += 360;
-    // }
-    // directionBearing %= 360;
-
-    //East is 0 in these calculations, but east is -90 in game
-    // directionBearing += 90;
-
-    // (value + 180) % 360 === 0 ? value : (value + 180) % 360 - 180;
-
+    //East is 0 in these calculations, but east is -90 in game. Also need to flip the angle to be looking top down instead of bottom up due to how minecraft minecrafts.
     beared = (180 - directionBearing) + 90
 
-    yaw = ((yaw + beared) % 360)* -1;
+    yaw = ((yaw + beared) % 360) * -1;
 
-    console.log();
-
+    // Original direction code
     // if (directionBearing === "north") {
     //     yaw = (yaw + 90) % 360;
     // } else if (directionBearing === "west") {
@@ -220,27 +219,6 @@ function BallisticsToTarget(cannon, target, power, directionBearing, length) {
     }];
 }
 
-
-function UnreachableConfig() {
-    document.getElementById('artillery-error').innerHTML = "The target is unreachable with your current configuration!";
-
-    // Output 1
-    document.getElementById('pitch-1').value = null;
-    document.getElementById('global-yaw-1').value = null;
-    document.getElementById('local-yaw-1').value = null;
-    document.getElementById('airtime-1').value = null;
-    document.getElementById('precision-1').value = null;
-
-    // Output 2
-    document.getElementById('pitch-2').value = null;
-    document.getElementById('global-yaw-2').value = null;
-    document.getElementById('local-yaw-2').value = null;
-    document.getElementById('airtime-2').value = null;
-    document.getElementById('precision-2').value = null;
-
-    throw "The target is unreachable with your current cannon configuration!";
-}
-
 function Calculate() {
     document.getElementById('artillery-error').innerHTML = "";
     document.getElementById("pitch-limit-notif-1").innerHTML = "";
@@ -263,16 +241,21 @@ function Calculate() {
                         Number(document.getElementById('target-coords-y').value), 
                         Number(document.getElementById('target-coords-z').value)];
 
+    const radBearing = initialMountBearing * (Math.PI/180);
+    const offsetX = cannonOffset[0] * Math.cos(radBearing) + cannonOffset[2] * Math.sin(radBearing);
+    const offsetY = -cannonOffset[0] * Math.sin(radBearing) + cannonOffset[2] * Math.cos(radBearing);
+    const finalCannonOffset = [offsetX, cannonOffset[1], offsetY];
+                    
+    const cannonCoords = [initialCoords[0] + finalCannonOffset[0], 
+                        initialCoords[1] + finalCannonOffset[1], 
+                        initialCoords[2] + finalCannonOffset[2]];
 
-    const cannonCoords = [initialCoords[0] + cannonOffset[0], 
-                        initialCoords[1] + cannonOffset[1], 
-                        initialCoords[2] + cannonOffset[2]];
-
-
+    //if(!isNaN(cannonOffset) || !isNaN(chargeNumber) || !isNaN(cannonLength) || !isNaN(initialCoords) /*|| !isNaN(initialMountBearing)*/ || !isNaN(targetCoords)) {
     if(!cannonOffset || !chargeNumber || !cannonLength || !initialCoords /*|| !initialMountBearing*/ || !targetCoords) {
         document.getElementById('artillery-error').innerHTML = "bro doesn't know how to enter a number 💀";
         return;
     }
+
 
     const result = BallisticsToTarget(cannonCoords, targetCoords, chargeNumber, initialMountBearing, cannonLength);
     console.log(result);
@@ -292,14 +275,22 @@ function Calculate() {
     document.getElementById('precision-2').value = result[1].precision;
 }
 
-// Doesn't account for if the angle is coterminal and greater than 360 but if that happens then somethings gone wrong or user error and the users can go fuck themselves
-function ConvertToGoodAngle(angle) {
-    console.log(angle);
-    if(angle > 180) {
-        angle -= 360
-    }
-    if(angle < -180) {
-        angle += 360
-    }
-    return angle;
+function UnreachableConfig() {
+    document.getElementById('artillery-error').innerHTML = "The target is unreachable with your current configuration!";
+
+    // Output 1
+    document.getElementById('pitch-1').value = null;
+    document.getElementById('global-yaw-1').value = null;
+    document.getElementById('local-yaw-1').value = null;
+    document.getElementById('airtime-1').value = null;
+    document.getElementById('precision-1').value = null;
+
+    // Output 2
+    document.getElementById('pitch-2').value = null;
+    document.getElementById('global-yaw-2').value = null;
+    document.getElementById('local-yaw-2').value = null;
+    document.getElementById('airtime-2').value = null;
+    document.getElementById('precision-2').value = null;
+
+    throw "The target is unreachable with your current cannon configuration!";
 }
