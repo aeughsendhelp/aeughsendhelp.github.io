@@ -11,11 +11,15 @@ let subInfo;
 const forward = new THREE.Vector3(0, 0, -1); 
 
 export class Submarine {
-    constructor(scene) {
-        this.scene = scene;
+    constructor(scn) {
+        this.scene = scn;
         this.transform = null;
+        this.acceleration = 0.001;
+
         this.throttle = 0;
         this.setDepth = 0;
+        this.setSpeed = 0;
+
         this.depth = 0;
         this.speed = 0;
         this.bearing = 0;
@@ -26,10 +30,56 @@ export class Submarine {
             this.scene.add(this.transform);
             // this.transform.position.y = 20;
         });
+
+        document.addEventListener('keydown', event => {
+            keyDown[event.key] = true;
+
+            if(event.key == 'w') {
+                this.throttleChange(1);
+            }
+            if(event.key == 's') {
+                this.throttleChange(-1);
+            }
+            if(event.key == 'e') {
+                this.depthChange(1);
+            }
+            if(event.key == 'q') {
+                this.depthChange(-1);
+            }
+            if(event.key == '`') {
+                aim();
+            }
+
+        });
+        document.addEventListener('keyup', event => {
+            keyDown[event.key] = false;
+        });
     }
-}
 
-export function submarineMove(speed, ) {
-    transform.translateOnAxis(forward, speed);
+    throttleChange(increment) {
+        this.throttle += increment;
+        this.throttle = THREE.MathUtils.clamp(this.throttle, -3, 5);
+    }
 
+    depthChange(increment) {
+        this.throttle += increment;
+        this.throttle = THREE.MathUtils.clamp(this.throttle, -3, 5);
+    }
+
+    move(speed) {
+        if(this.depth < 0) {
+            this.setSpeed  = this.throttle / 8;
+        } else {
+            this.setSpeed = this.throttle / 4;
+        }
+        
+        if(this.setSpeed > this.speed) {
+            this.speed += this.acceleration;
+        } else if(this.setSpeed < this.speed) {
+            this.speed -= this.acceleration;
+        }
+        
+        // this.speed = this.throttle * 1;
+        this.transform.translateOnAxis(forward, this.speed);
+    }
 }

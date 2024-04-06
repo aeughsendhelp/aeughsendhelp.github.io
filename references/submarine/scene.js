@@ -6,26 +6,24 @@ const gltfLoader = new GLTFLoader();
 const rgbeLoader = new RGBELoader();
 const textureLoader = new THREE.TextureLoader();
 
-let waterFog;
 let airFog;
-let waterColor = new THREE.Color(0x071516);
 let airColor = new THREE.Color(0xafc5d3);
-let fogDistance = 1000;
+let airFogDistance = 800;
+
+let waterFog;
+let waterColor = new THREE.Color(0x071516);
+let waterFogDistance = 100;
 
 export function initScene() {
     const scene = new THREE.Scene();
 
-    const near = 1;
-    const far = fogDistance;
-    waterFog = new THREE.Fog(waterColor, near, far);
-    airFog = new THREE.Fog(airColor, near, far);
+    airFog = new THREE.Fog(airColor, 1, airFogDistance);
+    waterFog = new THREE.Fog(waterColor, 1, waterFogDistance);
 
-    scene.fog = waterFog;
+    scene.fog = airFog;
     scene.background = waterColor;
     return scene;
 }
-
-
 
 export function initRenderer() {
     const renderer = new THREE.WebGLRenderer();
@@ -36,8 +34,8 @@ export function initRenderer() {
 
 // ------------------------------------------
 
-export function fog(cam, scn) {
-    if(cam.position.y >= 0) {
+export function fog(scn, cam) {
+    if(cam.position.y > 0.001) {
         scn.fog = airFog;
         scn.background = airColor;
     } else {
@@ -46,26 +44,6 @@ export function fog(cam, scn) {
     }
 }
 
-
-export function setupInput() {
-    document.addEventListener('keydown', event => {
-        keyDown[event.key] = true;
-
-        if(event.key == 'w') {
-            submarineThrottle(1);
-        }
-        if(event.key == 's') {
-            submarineThrottle(-1);
-        }
-        if(event.key == '`') {
-            aim();
-        }
-
-    });
-    document.addEventListener('keyup', event => {
-        keyDown[event.key] = false;
-    });
-}
 
 export function setupScene(scn) {
     const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x8abbce, 10);
