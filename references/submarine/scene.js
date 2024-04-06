@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.114/build/three.module.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/loaders/RGBELoader.js';
+import { clamp } from './utils.js';
 
 const gltfLoader = new GLTFLoader();
 const rgbeLoader = new RGBELoader();
@@ -13,6 +14,7 @@ let airFogDistance = 800;
 let waterFog;
 let waterColor = new THREE.Color(0x071516);
 let waterFogDistance = 100;
+
 
 export function initScene() {
     const scene = new THREE.Scene();
@@ -69,6 +71,4 @@ export function setupScene(scn) {
             scn.add(ocean);
         }
     );
-
-    subInfo = document.getElementById("subInfo");
 }
