@@ -7,18 +7,18 @@ import { CustomCamera } from './camera.js';
 import { clamp } from './utils.js';
 
 const scene = initScene();
-const camera = new CustomCamera();
 const renderer = initRenderer();
 const canvas = document.querySelector('canvas');
 const info = document.getElementById("info");
 const submarine = new Submarine(scene);
-
+const camera = new CustomCamera();
 
 setupScene(scene);
 
 canvas.addEventListener("click", async () => {
     await canvas.requestPointerLock();
 });
+
 
 function animate() {
     requestAnimationFrame(animate);
@@ -28,6 +28,7 @@ function animate() {
     fog(scene, camera.camera)
 
     submarine.move();
+    camera.submarine = submarine;
 
     camera.update();
     renderer.render(scene, camera.camera);
