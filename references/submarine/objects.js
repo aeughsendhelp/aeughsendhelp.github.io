@@ -26,6 +26,7 @@ export class Submarine {
         this.depth = 0;
         this.speed = 0;
         this.bearing = 0;
+        this.wasPressed = {};
 
 
         // Load submarine model
@@ -36,8 +37,23 @@ export class Submarine {
         });
 
         // console.log(input);
-        input.listenKeyClick('w', this.throttleChange, this);
         // input.listenKeyClick('s', this.throttleChange(-1));
+
+        document.addEventListener('keydown', event => {
+            if(!this.wasPressed[event.key]) {
+                if(event.key === 'w') {
+                    this.throttleChange(1);
+                } else if(event.key === 's') {
+                    this.throttleChange(-1);
+                }
+
+                this.wasPressed[event.key] = true;
+            }
+        });
+
+        document.addEventListener('keyup', event => {
+            this.wasPressed[event.key] = false;
+        });
 
     }
 
@@ -52,7 +68,7 @@ export class Submarine {
     }
 
     bearingChange(increment) {
-        this.bearing += increment * clamp(this.speed, -1, 1);
+        this.bearing += increment * clamp(this.speed, -3, 3);
 
         if(this.bearing > 360) {
             this.bearing -= 360;
@@ -66,10 +82,10 @@ export class Submarine {
             console.log("gay");
         }
         if(input.isPressed['a']) {
-            this.bearingChange(1);
+            this.bearingChange(0.6);
         }
         if(input.isPressed['d']) {
-            this.bearingChange(-1);
+            this.bearingChange(-0.6);
         }
         if(input.isPressed['e']) {
             this.depthChange(1);
