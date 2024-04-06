@@ -1,4 +1,5 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.114/build/three.module.js';
+import { clamp } from './utils.js';
 
 export class CustomCamera {
     constructor() {
@@ -44,8 +45,4 @@ export class CustomCamera {
         this.camera.translateZ(this.distance);
         // console.log(this.camera.fov);
     }
-}
-
-function clamp(value, min, max) {
-    return Math.min(Math.max(value, min), max);
 }
