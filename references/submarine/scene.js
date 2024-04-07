@@ -30,6 +30,11 @@ export function initScene() {
 export function initRenderer() {
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.antialias = false;
+    renderer.setPixelRatio( window.devicePixelRatio / 3 );
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
     document.body.appendChild(renderer.domElement);
     return renderer;
 }
