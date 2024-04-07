@@ -24,6 +24,7 @@ export function initScene() {
 
     scene.fog = airFog;
     scene.background = waterColor;
+    
     return scene;
 }
 

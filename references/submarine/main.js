@@ -15,6 +15,16 @@ const camera = new CustomCamera();
 
 setupScene(scene);
 
+
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+    camera.camera.aspect = window.innerWidth / window.innerHeight;
+    camera.camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+}
+
 canvas.addEventListener("click", async () => {
     await canvas.requestPointerLock();
 });
