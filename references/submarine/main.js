@@ -50,7 +50,8 @@ function drawInfo() {
     Set Depth: ${submarine.setDepth.toFixed(2)} m<br>
     <br>
     Speed: ${(submarine.speed * 3.6).toFixed(2)} kmph<br>
-    Depth: ${submarine.depth.toFixed(0)} m`
+    Depth: ${submarine.depth.toFixed(0)} m
+    <div>chink</div>`
 }
 
 animate();
