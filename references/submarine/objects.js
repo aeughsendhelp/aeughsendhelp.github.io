@@ -17,13 +17,14 @@ export class Submarine {
         this.scene = scn;
         this.transform = null;
         this.acceleration = 0.001;
-        this.ascentRate = 0.1;
+        this.ascentRate = 0.0003;
 
         this.throttle = 0;
         this.setDepth = 0;
         this.setSpeed = 0;
 
         this.depth = 0;
+        this.depthSpeed = 0
         this.speed = 0;
         this.bearing = 0;
         this.wasPressed = {};
@@ -35,9 +36,6 @@ export class Submarine {
             this.scene.add(this.transform);
             // this.transform.position.y = 20;
         });
-
-        // console.log(input);
-        // input.listenKeyClick('s', this.throttleChange(-1));
 
         document.addEventListener('keydown', event => {
             if(!this.wasPressed[event.key]) {
@@ -62,7 +60,7 @@ export class Submarine {
         this.throttle = clamp(this.throttle, -3, 5);
     }
 
-    depthChange(increment) {
+    depthChange(increment) { // not to be confused with depth charge
         this.setDepth += increment;
         this.setDepth = clamp(this.setDepth, -150, 0);
     }
@@ -111,10 +109,18 @@ export class Submarine {
         }
 
         // Depth
+
         if(this.setDepth > this.depth) {
-            this.depth += this.ascentRate;
+            this.depthSpeed += this.ascentRate;
         } else if(this.setDepth < this.speed) {
-            this.depth -= this.ascentRate;
+            this.depthSpeed -= this.ascentRate;
+        }
+        this.depthSpeed = clamp(this.depthSpeed, -0.05, 0.05);
+
+        this.depth += this.depthSpeed;
+
+        if(this.depth > 0) {
+            this.depthSpeed -= 1; // 9.81
         }
         
         // this.speed = this.throttle * 1;
