@@ -12,8 +12,8 @@ const canvas = document.querySelector('canvas');
 const info = document.getElementById("info");
 const submarine = new Submarine(scene);
 const camera = new CustomCamera();
-
-setupScene(scene);
+// const water = 
+setupScene(scene, renderer);
 
 
 window.addEventListener( 'resize', onWindowResize, false );
@@ -30,16 +30,19 @@ canvas.addEventListener("click", async () => {
 });
 
 
+
 function animate() {
     requestAnimationFrame(animate);
     if(!submarine.transform) return;
 
     camera.target = submarine.transform.position;
-    fog(scene, camera.camera)
+    // fog(scene, camera.camera)
 
     submarine.move();
     camera.submarine = submarine;
 
+    // water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
+    
     camera.update();
     renderer.render(scene, camera.camera);
     drawInfo();
