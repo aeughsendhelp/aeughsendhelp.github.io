@@ -115,12 +115,12 @@ export class Submarine {
         } else if(this.setDepth < this.speed) {
             this.depthSpeed -= this.ascentRate;
         }
-        this.depthSpeed = clamp(this.depthSpeed, -0.05, 0.05);
+        this.depthSpeed = clamp(this.depthSpeed, -0.07, 0.07);
 
         this.depth += this.depthSpeed;
 
         if(this.depth > 0) {
-            this.depthSpeed -= 1; // 9.81
+            this.depthSpeed -= 0.0005; // 9.81
         }
         
         // this.speed = this.throttle * 1;

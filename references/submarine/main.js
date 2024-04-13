@@ -2,9 +2,10 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.114/build/three.module.js';
 
 import { Submarine } from './objects.js';
-import { initScene, initRenderer, fog, setupScene } from './scene.js';
+import { initScene, initRenderer, fog, setupScene, updateSun } from './scene.js';
 import { CustomCamera } from './camera.js';
 import { clamp } from './utils.js';
+
 
 const scene = initScene();
 const renderer = initRenderer();
@@ -12,6 +13,7 @@ const canvas = document.querySelector('canvas');
 const info = document.getElementById("info");
 const submarine = new Submarine(scene);
 const camera = new CustomCamera();
+
 // const water = 
 setupScene(scene, renderer);
 
@@ -44,8 +46,9 @@ function animate() {
     // water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
     
     camera.update();
-    renderer.render(scene, camera.camera);
+    // updateSun()
     drawInfo();
+    renderer.render(scene, camera.camera);
 }
 
 function drawInfo() {

@@ -18,6 +18,25 @@ let waterFog;
 let waterColor = new THREE.Color(0x071516);
 let waterFogDistance = 100;
 
+let box;
+
+const skyParameters = {
+    turbidity: 10,
+    rayleigh: 3,
+    mieCoefficient: 0.005,
+    mieDirectionalG: 0.7,
+    elevation: 20,
+    azimuth: 180,
+};
+
+let renderTarget;
+const sceneEnv = new THREE.Scene();
+let pmremGenerator;
+
+
+let scene, renderer;
+
+
 export function initScene() {
     const scene = new THREE.Scene();
 
@@ -31,7 +50,7 @@ export function initScene() {
 }
 
 export function initRenderer() {
-    const renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.antialias = false;
     renderer.setPixelRatio( window.devicePixelRatio / 3 );
@@ -41,46 +60,57 @@ export function initRenderer() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     document.body.appendChild(renderer.domElement);
+
+    pmremGenerator = new THREE.PMREMGenerator( renderer );
+    pmremGenerator.compileCubemapShader();
     return renderer;
 }
 
 // ------------------------------------------
 
-export function fog(scn, cam) {
+export function fog(scene, cam) {
     if(cam.position.y > 0.001) {
-        scn.fog = airFog;
-        scn.background = airColor;
+        scene.fog = airFog;
+        scene.background = airColor;
     } else {
-        scn.fog = waterFog;
-        scn.background = waterColor;
+        scene.fog = waterFog;
+        scene.background = waterColor;
     }
 }
 
 
 export function setupScene(scn) {
+    scene = scn;
+
     // renderer.toneMappingExposure = effectController.exposure;
 
-
-    // const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x2b4c59, 5);
-    // hemisphereLight.position.set(0, 10, 0);
-    // scn.add(hemisphereLight);
+    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x2b4c59, 5);
+    hemisphereLight.position.set(0, 10, 0);
+    scene.add(hemisphereLight);
 
     // const sun2 = new THREE.DirectionalLight(0xf2e7cb, 5);
     // sun2.position.set(0, 20, 0);
     // sun2.target.position.set(10, 10, 10);
-    // scn.add(sun2);
+    // scene.add(sun2);
     // sun2.target.updateMatrixWorld();
 
     // const helper = new THREE.DirectionalLightHelper(sun);
-    // scn.add(helper);
+    // scene.add(helper);
 
     // ground
+    sun = new THREE.Vector3();
+
     const groundGeometry = new THREE.PlaneGeometry(1000, 1000);
     const groundMaterial = new THREE.MeshLambertMaterial({ color: 0xaaaaaa, side: THREE.DoubleSide });
     const ground = new THREE.Mesh(groundGeometry, groundMaterial);
     ground.rotation.x = Math.PI / 2;
     ground.position.y = -300;
-    scn.add(ground);
+    scene.add(ground);
+
+    const boxMat = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, side: THREE.DoubleSide });
+    box = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), groundMaterial);
+    box.position.y = 10;
+    scene.add(box);
 
     // ocean
     const oceanGeometry = new THREE.PlaneGeometry(1000, 1000);
@@ -98,60 +128,64 @@ export function setupScene(scn) {
                     sunColor: 0xffffff,
                     waterColor: 0x001e0f,
                     distortionScale: 3.7,
-                    fog: scn.fog !== undefined
+                    fog: scene.fog !== undefined
                 }
             );
 
             // const ocean = new THREE.Mesh(oceanGeometry, water);
             water.rotation.x = Math.PI / -2;
             // ocean.position.y = 0;
-            scn.add(water);
+            scene.add(water);
 
-            
-        // Add Sky
-        sky = new Sky();
-        sky.scale.setScalar( 450000 );
-        scn.add( sky );
+            // Skybox
+            sky = new Sky();
+            sky.scale.setScalar( 10000 );
+            scene.add( sky );
 
-        sun = new THREE.Vector3();
-
-        /// GUI
-        const effectController = {
-            turbidity: 10,
-            rayleigh: 3,
-            mieCoefficient: 0.005,
-            mieDirectionalG: 0.7,
-            elevation: 90,
-            azimuth: 180,
-            // exposure: renderer.toneMappingExposure
-        };
-
-        const uniforms = sky.material.uniforms;
-        uniforms[ 'turbidity' ].value = effectController.turbidity;
-        uniforms[ 'rayleigh' ].value = effectController.rayleigh;
-        uniforms[ 'mieCoefficient' ].value = effectController.mieCoefficient;
-        uniforms[ 'mieDirectionalG' ].value = effectController.mieDirectionalG;
-
-        const phi = THREE.MathUtils.degToRad( 90 - effectController.elevation );
-        const theta = THREE.MathUtils.degToRad( effectController.azimuth );
-
-        sun.setFromSphericalCoords( 1, phi, theta );
-        uniforms[ 'sunPosition' ].value.copy( sun );
-
-        function updateSun() {
-            const phi = THREE.MathUtils.degToRad( 90 - effectController.elevation );
-            const theta = THREE.MathUtils.degToRad( effectController.azimuth );
-
-            sun.setFromSphericalCoords( 1, phi, theta );
-
-            sky.material.uniforms[ 'sunPosition' ].value.copy( sun );
-            water.material.uniforms[ 'sunDirection' ].value.copy( sun ).normalize();
-
-
-            scn.add( sky );
-        }
-
-        updateSun();
+            const skyUniforms = sky.material.uniforms;
+            box.material.map = texture;
+            box.material.needsUpdate = true;
+            updateSun();
         }
     );
+}
+
+export function updateSun() {
+    const uniforms = sky.material.uniforms;
+    uniforms[ 'turbidity' ].value = skyParameters.turbidity;
+    uniforms[ 'rayleigh' ].value = skyParameters.rayleigh;
+    uniforms[ 'mieCoefficient' ].value = skyParameters.mieCoefficient;
+    uniforms[ 'mieDirectionalG' ].value = skyParameters.mieDirectionalG;
+
+    const phi = THREE.MathUtils.degToRad( 90 - skyParameters.elevation );
+    const theta = THREE.MathUtils.degToRad( skyParameters.azimuth );
+ 
+    sun.setFromSphericalCoords( 1, phi, theta );
+
+    uniforms[ 'sunPosition' ].value.copy( sun );
+    water.material.uniforms[ 'sunDirection' ].value.copy( sun ).normalize();
+
+    setEnvironment();
+}
+
+function setEnvironment() {
+    if ( renderTarget !== undefined ) renderTarget.dispose();
+
+    sceneEnv.add( sky );
+    renderTarget = pmremGenerator.fromScene( scene);
+
+    scene.add( sky );
+
+    scene.environment = renderTarget.texture;
+
+    // rgbeLoader.load('../images/felsenlabyrinth_8k.hdr', ( texture ) => {
+    //     console.log(texture);
+    //     let temp = pmremGenerator.fromEquirectangular( texture);
+    //     renderTarget = temp;
+
+    //     box.material.map = renderTarget.texture;
+    //     box.material.needsUpdate = true;
+
+    //     scene.environment = renderTarget.texture;
+    // });
 }
