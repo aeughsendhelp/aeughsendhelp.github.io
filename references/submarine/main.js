@@ -53,8 +53,8 @@ function drawInfo() {
     info.innerHTML = `Throttle: ${submarine.throttle}<br>
     Set Depth: ${submarine.setDepth.toFixed(1)} m<br>
     <br>
-    Speed: ${(submarine.speed * 60).toFixed(1)} kmph<br>
-    Depth: ${submarine.depth.toFixed(0)} m
+    Speed: ${(submarine.velocity.z * 60).toFixed(0)} kmph<br>
+    Depth: ${submarine.transform.position.y.toFixed(0)} m
     <div>chink</div>`
 }
 

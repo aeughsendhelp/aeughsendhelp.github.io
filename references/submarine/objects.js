@@ -23,9 +23,8 @@ export class Submarine {
         this.setDepth = 0;
         this.setSpeed = 0;
 
-        this.depth = 0;
-        this.depthSpeed = 0
-        this.speed = 0;
+        this.velocity = new THREE.Vector3(0, 0, 0);
+
         this.bearing = 0;
         this.wasPressed = {};
 
@@ -66,7 +65,7 @@ export class Submarine {
     }
 
     bearingChange(increment) {
-        this.bearing += increment * clamp(this.speed, -3, 3);
+        this.bearing += increment * clamp(this.velocity.z, -3, 3);
 
         if(this.bearing > 360) {
             this.bearing -= 360;
@@ -76,9 +75,6 @@ export class Submarine {
     }
 
     move(speed) {
-        if(input.isPressed['q']) {
-            console.log("gay");
-        }
         if(input.isPressed['a']) {
             this.bearingChange(0.6);
         }
@@ -96,36 +92,34 @@ export class Submarine {
         }
 
         // Speed
-        if(this.depth < 0) {
+        if(this.transform.position.y < 0) {
             this.setSpeed  = this.throttle / 8;
         } else {
             this.setSpeed = this.throttle / 4;
         }
         
-        if(this.setSpeed > this.speed) {
-            this.speed += this.acceleration;
-        } else if(this.setSpeed < this.speed) {
-            this.speed -= this.acceleration;
+        if(this.setSpeed > this.velocity.z) {
+            this.velocity.z += this.acceleration;
+        } else if(this.setSpeed < this.velocity.z) {
+            this.velocity.z -= this.acceleration;
         }
 
         // Depth
 
-        if(this.setDepth > this.depth) {
-            this.depthSpeed += this.ascentRate;
-        } else if(this.setDepth < this.speed) {
-            this.depthSpeed -= this.ascentRate;
+        if(this.setDepth > this.transform.position.y) {
+            this.velocity.y += this.ascentRate;
+        } else if(this.setDepth < this.velocity.z) {
+            this.velocity.y -= this.ascentRate;
         }
-        this.depthSpeed = clamp(this.depthSpeed, -0.07, 0.07);
 
-        this.depth += this.depthSpeed;
 
-        if(this.depth > 0) {
-            this.depthSpeed -= 0.0005; // 9.81
-        }
-        
+        this.velocity.y = clamp(this.velocity.y, -0.05, 0.05);
+
+
         // this.speed = this.throttle * 1;
-        this.transform.translateOnAxis(forward, this.speed);
-        this.transform.position.y = this.depth;
+        this.transform.translateOnAxis(forward, this.velocity.z);
+        this.transform.position.y += this.velocity.y;
+
         this.transform.rotation.y = THREE.MathUtils.degToRad(this.bearing);
     }
 }
