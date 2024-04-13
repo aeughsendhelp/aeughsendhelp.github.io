@@ -18,8 +18,6 @@ let waterFog;
 let waterColor = new THREE.Color(0x071516);
 let waterFogDistance = 100;
 
-let box;
-
 const skyParameters = {
     turbidity: 10,
     rayleigh: 3,
@@ -33,8 +31,7 @@ let renderTarget;
 const sceneEnv = new THREE.Scene();
 let pmremGenerator;
 
-
-let scene, renderer;
+let scene, renderer, waterUniforms;
 
 
 export function initScene() {
@@ -88,12 +85,6 @@ export function setupScene(scn) {
     hemisphereLight.position.set(0, 10, 0);
     scene.add(hemisphereLight);
 
-    // const sun2 = new THREE.DirectionalLight(0xf2e7cb, 5);
-    // sun2.position.set(0, 20, 0);
-    // sun2.target.position.set(10, 10, 10);
-    // scene.add(sun2);
-    // sun2.target.updateMatrixWorld();
-
     // const helper = new THREE.DirectionalLightHelper(sun);
     // scene.add(helper);
 
@@ -106,11 +97,6 @@ export function setupScene(scn) {
     ground.rotation.x = Math.PI / 2;
     ground.position.y = -300;
     scene.add(ground);
-
-    const boxMat = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, side: THREE.DoubleSide });
-    box = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), groundMaterial);
-    box.position.y = 10;
-    scene.add(box);
 
     // ocean
     const oceanGeometry = new THREE.PlaneGeometry(1000, 1000);
@@ -127,10 +113,11 @@ export function setupScene(scn) {
                     sunDirection: new THREE.Vector3(0, 0, 0 ),
                     sunColor: 0xffffff,
                     waterColor: 0x001e0f,
-                    distortionScale: 3.7,
-                    fog: scene.fog !== undefined
+                    distortionScale: 2,
+                    fog: scene.fog !== undefined,
                 }
             );
+
 
             // const ocean = new THREE.Mesh(oceanGeometry, water);
             water.rotation.x = Math.PI / -2;
@@ -142,50 +129,52 @@ export function setupScene(scn) {
             sky.scale.setScalar( 10000 );
             scene.add( sky );
 
+
+            // sun
             const skyUniforms = sky.material.uniforms;
-            box.material.map = texture;
-            box.material.needsUpdate = true;
-            updateSun();
+            skyUniforms[ 'turbidity' ].value = skyParameters.turbidity;
+            skyUniforms[ 'rayleigh' ].value = skyParameters.rayleigh;
+            skyUniforms[ 'mieCoefficient' ].value = skyParameters.mieCoefficient;
+            skyUniforms[ 'mieDirectionalG' ].value = skyParameters.mieDirectionalG;
+
+            const phi = THREE.MathUtils.degToRad( 90 - skyParameters.elevation );
+            const theta = THREE.MathUtils.degToRad( skyParameters.azimuth );
+            sun.setFromSphericalCoords( 1, phi, theta );
+            const sunLight = new THREE.DirectionalLight(0xf2e7cb, 5);
+            scene.add(sunLight);
+
+            skyUniforms[ 'sunPosition' ].value.copy( sun );
+
+            sunLight.position.set(0, 10, 10);
+            sunLight.target.position.set(0, 0, 0);
+            sunLight.target.updateMatrixWorld();
+
+            waterUniforms = water.material.uniforms;
+            waterUniforms[ 'size' ].value = 6;
+            waterUniforms[ 'sunDirection' ].value.copy( sun ).normalize();
+
+
+
+            // generating lighting DOESN'T FUCKING WORK, i think it's because the example i'm using uses an old version of three js
+            // if anyone knows how to make this work please tell me
+            /*
+            if ( renderTarget !== undefined ) renderTarget.dispose();
+
+            sceneEnv.add( sky );
+            renderTarget = pmremGenerator.fromScene( sceneEnv );
+
+            scene.add( sky );
+            scene.environment = renderTarget.texture;
+            */
         }
     );
+    animate();
 }
 
-export function updateSun() {
-    const uniforms = sky.material.uniforms;
-    uniforms[ 'turbidity' ].value = skyParameters.turbidity;
-    uniforms[ 'rayleigh' ].value = skyParameters.rayleigh;
-    uniforms[ 'mieCoefficient' ].value = skyParameters.mieCoefficient;
-    uniforms[ 'mieDirectionalG' ].value = skyParameters.mieDirectionalG;
+function animate() {
+    requestAnimationFrame(animate);
 
-    const phi = THREE.MathUtils.degToRad( 90 - skyParameters.elevation );
-    const theta = THREE.MathUtils.degToRad( skyParameters.azimuth );
- 
-    sun.setFromSphericalCoords( 1, phi, theta );
-
-    uniforms[ 'sunPosition' ].value.copy( sun );
-    water.material.uniforms[ 'sunDirection' ].value.copy( sun ).normalize();
-
-    setEnvironment();
-}
-
-function setEnvironment() {
-    if ( renderTarget !== undefined ) renderTarget.dispose();
-
-    sceneEnv.add( sky );
-    renderTarget = pmremGenerator.fromScene( scene);
-
-    scene.add( sky );
-
-    scene.environment = renderTarget.texture;
-
-    // rgbeLoader.load('../images/felsenlabyrinth_8k.hdr', ( texture ) => {
-    //     console.log(texture);
-    //     let temp = pmremGenerator.fromEquirectangular( texture);
-    //     renderTarget = temp;
-
-    //     box.material.map = renderTarget.texture;
-    //     box.material.needsUpdate = true;
-
-    //     scene.environment = renderTarget.texture;
-    // });
+    if(waterUniforms !== undefined) {
+        waterUniforms[ 'time' ].value += 0.5 / 60.0;
+    }
 }

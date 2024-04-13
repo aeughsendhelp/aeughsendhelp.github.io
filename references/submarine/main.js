@@ -2,7 +2,7 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.114/build/three.module.js';
 
 import { Submarine } from './objects.js';
-import { initScene, initRenderer, fog, setupScene, updateSun } from './scene.js';
+import { initScene, initRenderer, fog, setupScene } from './scene.js';
 import { CustomCamera } from './camera.js';
 import { clamp } from './utils.js';
 
@@ -38,12 +38,10 @@ function animate() {
     if(!submarine.transform) return;
 
     camera.target = submarine.transform.position;
-    // fog(scene, camera.camera)
+    fog(scene, camera.camera)
 
     submarine.move();
     camera.submarine = submarine;
-
-    // water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
     
     camera.update();
     // updateSun()
@@ -53,9 +51,9 @@ function animate() {
 
 function drawInfo() {
     info.innerHTML = `Throttle: ${submarine.throttle}<br>
-    Set Depth: ${submarine.setDepth.toFixed(2)} m<br>
+    Set Depth: ${submarine.setDepth.toFixed(1)} m<br>
     <br>
-    Speed: ${(submarine.speed * 3.6).toFixed(2)} kmph<br>
+    Speed: ${(submarine.speed * 60).toFixed(1)} kmph<br>
     Depth: ${submarine.depth.toFixed(0)} m
     <div>chink</div>`
 }
