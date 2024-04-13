@@ -27,13 +27,14 @@ export class Submarine {
 
         this.bearing = 0;
         this.wasPressed = {};
+        this.bouyancy = 0.009;
 
 
         // Load submarine model
         gltfLoader.load('../references/submarine/submarine.glb', (gltf) => {
             this.transform = gltf.scene;
             this.scene.add(this.transform);
-            // this.transform.position.y = 20;
+            this.transform.position.y = 10;
         });
 
         document.addEventListener('keydown', event => {
@@ -51,7 +52,6 @@ export class Submarine {
         document.addEventListener('keyup', event => {
             this.wasPressed[event.key] = false;
         });
-
     }
 
     throttleChange(increment) {
@@ -82,14 +82,25 @@ export class Submarine {
             this.bearingChange(-0.6);
         }
         if(input.isPressed['e']) {
-            this.depthChange(1);
+            this.depthChange(0.5);
         }
         if(input.isPressed['q']) {
-            this.depthChange(-1);
+            this.depthChange(-0.5);
         }
         if(input.isPressed['`']) {
             aim();
         }
+
+        const buoyantForce = 0.001;
+
+
+        this.velocity.y -= 9.8 / 3000; // gravity
+
+        if(this.transform.position.y < 0) {
+            this.velocity.y += Math.min(0.005, buoyantForce * -this.transform.position.y);
+        } 
+
+        this.velocity.y *= 0.99;
 
         // Speed
         if(this.transform.position.y < 0) {
@@ -112,8 +123,8 @@ export class Submarine {
             this.velocity.y -= this.ascentRate;
         }
 
+        // this.velocity.y = clamp(this.velocity.y, -0.05, 0.05);
 
-        this.velocity.y = clamp(this.velocity.y, -0.05, 0.05);
 
 
         // this.speed = this.throttle * 1;
